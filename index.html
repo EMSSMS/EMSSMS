@@ -37,39 +37,40 @@
     <!-- VIEWS CONTAINER -->
     <div id="appContainer" class="flex-1 flex flex-col">
 
-        <!-- ========== LOGIN VIEW (Split Screen with Exact Left Banner Image) ========== -->
-        <div id="loginView" class="view active flex-1 flex flex-col md:flex-row h-screen overflow-hidden">
-            <!-- Left Side Banner with exact requested image -->
-            <div class="hidden md:flex md:w-1/2 bg-blue-100 dark:bg-slate-900 items-center justify-center relative overflow-hidden">
-                <img src="https://ems-sms-logo.edgeone.dev/Screenshot_20260722-194354__01.jpg" alt="EMS SMS Login Left Banner" class="w-full h-full object-cover">
-            </div>
+        <!-- ========== LOGIN VIEW (Boxed Layout with Precise Edges) ========== -->
+        <div id="loginView" class="view active flex-1 flex items-center justify-center p-4 bg-slate-100 dark:bg-slate-950">
+            <!-- Box Container -->
+            <div class="bg-white dark:bg-slate-900 w-full max-w-4xl rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col md:flex-row">
+                <!-- Left Side Banner Box -->
+                <div class="w-full md:w-1/2 bg-blue-50 dark:bg-slate-900 flex items-center justify-center p-6 border-b md:border-b-0 md:border-r border-slate-200 dark:border-slate-800">
+                    <img src="https://ems-sms-logo.edgeone.dev/Screenshot_20260722-194354__01.jpg" alt="EMS SMS Login Left Banner" class="w-full h-auto max-h-[350px] object-contain rounded-xl shadow-md">
+                </div>
 
-            <!-- Right Side Login Form -->
-            <div class="flex-1 flex items-center justify-center p-6 bg-white dark:bg-slate-900 overflow-y-auto">
-                <div class="w-full max-w-md space-y-6">
+                <!-- Right Side Login Form Box -->
+                <div class="w-full md:w-1/2 p-8 flex flex-col justify-center space-y-5 bg-white dark:bg-slate-900">
                     <div class="text-left">
                         <p class="text-xs font-semibold text-rose-500 mb-2">Accounts are free and always will be.</p>
-                        <img src="https://ems-sms.edgeone.dev/7c0bd812-5290-4d5d-9812-7840a6acb5a7-removebg-preview.png" alt="EMS SMS Logo" class="h-8 object-contain mb-4">
+                        <img src="https://ems-sms.edgeone.dev/7c0bd812-5290-4d5d-9812-7840a6acb5a7-removebg-preview.png" alt="EMS SMS Logo" class="h-8 object-contain mb-3">
                         <h2 class="text-xl font-bold text-slate-800 dark:text-white mb-1">Welcome back!</h2>
                         <p class="text-xs text-slate-500 dark:text-slate-400">Please sign in to continue.</p>
                     </div>
 
-                    <div id="loginError" class="bg-red-100 text-red-600 text-xs p-2.5 rounded-lg hidden"></div>
+                    <div id="loginError" class="bg-red-100 text-red-600 text-xs p-2.5 rounded-xl border border-red-200 hidden"></div>
 
                     <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-4 text-xs">
                         <div>
-                            <label class="block font-medium mb-1 text-slate-600 dark:text-slate-300">Username</label>
-                            <input type="text" id="loginUser" placeholder="Enter Your Username" required class="w-full px-3 py-2.5 border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 outline-none focus:border-blue-600">
+                            <label class="block font-medium mb-1.5 text-slate-600 dark:text-slate-300">Username</label>
+                            <input type="text" id="loginUser" placeholder="Enter Your Username" required class="w-full px-3.5 py-3 border border-slate-300 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 outline-none focus:border-blue-600 transition">
                         </div>
                         <div>
-                            <label class="block font-medium mb-1 text-slate-600 dark:text-slate-300">Password</label>
-                            <input type="password" id="loginPass" placeholder="Enter Your Password" required class="w-full px-3 py-2.5 border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 outline-none focus:border-blue-600">
+                            <label class="block font-medium mb-1.5 text-slate-600 dark:text-slate-300">Password</label>
+                            <input type="password" id="loginPass" placeholder="Enter Your Password" required class="w-full px-3.5 py-3 border border-slate-300 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 outline-none focus:border-blue-600 transition">
                         </div>
-                        <div class="flex items-center justify-between">
+                        <div class="flex items-center justify-between bg-slate-50 dark:bg-slate-800 p-3 border border-slate-300 dark:border-slate-700 rounded-xl">
                             <span id="captchaText" class="font-medium text-slate-600 dark:text-slate-300"></span>
-                            <input type="text" id="captchaInput" placeholder="Answer" required class="w-24 px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-800 text-center outline-none">
+                            <input type="text" id="captchaInput" placeholder="Answer" required class="w-24 px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-900 text-center outline-none">
                         </div>
-                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow transition">Sign In</button>
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl shadow-md transition">Sign In</button>
                     </form>
                 </div>
             </div>
@@ -239,7 +240,7 @@
                                             <td class="p-3 border border-slate-200 dark:border-slate-700 font-semibold text-slate-700 dark:text-slate-200">Total SMS<br><span class="text-base font-bold text-slate-900 dark:text-white">0</span></td>
                                             <td class="p-3 border border-slate-200 dark:border-slate-700"></td>
                                             <td class="p-3 border border-slate-200 dark:border-slate-700"></td>
-                                            <td class="p-3 border border-slate-200 dark:border-slate-700"></td>
+                                            <td class="p-3 bor                             <td class="p-3 border border-slate-200 dark:border-slate-700"></td>
                                             <td class="p-3 border border-slate-200 dark:border-slate-700"></td>
                                         </tr>
                                     </tbody>
@@ -247,7 +248,8 @@
                             </div>
                         </div>
                     </div>
-                                <!-- 4. SMS ACCESS LIST SECTION -->
+
+                    <!-- 4. SMS ACCESS LIST SECTION -->
                     <div id="accessSection" class="space-y-4 hidden">
                         <div>
                             <h1 class="text-xl font-bold tracking-tight">SMS Access List</h1>
@@ -545,4 +547,5 @@
         };
     </script>
 </body>
-                                                                                            </html>                                                                                                                             
+                </html>
+                
