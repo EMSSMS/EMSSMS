@@ -37,7 +37,7 @@
     <!-- VIEWS CONTAINER -->
     <div id="appContainer" class="flex-1 flex flex-col">
 
-        <!-- ========== LOGIN VIEW (Restored Original Full-Height Split Screen Layout) ========== -->
+        <!-- ========== LOGIN VIEW (Original Full-Height Split Screen Layout) ========== -->
         <div id="loginView" class="view active flex-1 flex flex-col md:flex-row h-screen overflow-hidden">
             <!-- Left Side Banner Image filling exact half height/width -->
             <div class="hidden md:flex md:w-1/2 bg-blue-100 dark:bg-slate-900 items-center justify-center relative overflow-hidden">
@@ -246,10 +246,8 @@
                                 </table>
                             </div>
                         </div>
-                        </div>
-                    </div>
-
-                    <!-- 4. SMS ACCESS LIST SECTION -->
+                                                                                                             </div>
+                                                                                                                                 <!-- 4. SMS ACCESS LIST SECTION -->
                     <div id="accessSection" class="space-y-4 hidden">
                         <div>
                             <h1 class="text-xl font-bold tracking-tight">SMS Access List</h1>
@@ -307,8 +305,8 @@
                 </main>
             </div>
 
-            <!-- Footer -->
-            <footer class="text-center py-3 text-[11px] text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition-colors duration-300">
+            <!-- Footer (Shown ONLY on Numbers, CDR, and Access, hidden on Dashboard & Login) -->
+            <footer id="pageFooterNotice" class="text-center py-3 text-[11px] text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition-colors duration-300 hidden">
                 Copyright &copy; 2026 EMS SMS Panel ♥️
             </footer>
         </div>
@@ -424,6 +422,7 @@
             document.getElementById('loginView').classList.add('hidden');
             document.getElementById('mainAppView').classList.remove('hidden');
             document.getElementById('profileUsernameDisplay').innerText = u;
+            showSection('dashboard');
         }
 
         function logout() {
@@ -431,6 +430,7 @@
             document.getElementById('loginView').classList.remove('hidden');
             document.getElementById('loginUser').value = '';
             document.getElementById('loginPass').value = '';
+            document.getElementById('pageFooterNotice').classList.add('hidden');
             generateCaptcha();
         }
 
@@ -530,12 +530,27 @@
             document.getElementById('activitySection').classList.add('hidden');
             document.getElementById('notificationsSection').classList.add('hidden');
 
-            if (sectionName === 'dashboard') document.getElementById('dashboardSection').classList.remove('hidden');
-            if (sectionName === 'numbers') document.getElementById('numbersSection').classList.remove('hidden');
-            if (sectionName === 'cdr') document.getElementById('cdrSection').classList.remove('hidden');
-            if (sectionName === 'access') document.getElementById('accessSection').classList.remove('hidden');
-            if (sectionName === 'activity') document.getElementById('activitySection').classList.remove('hidden');
-            if (sectionName === 'notifications') document.getElementById('notificationsSection').classList.remove('hidden');
+            const footerNotice = document.getElementById('pageFooterNotice');
+
+            if (sectionName === 'dashboard') {
+                document.getElementById('dashboardSection').classList.remove('hidden');
+                footerNotice.classList.add('hidden'); 
+            } else if (sectionName === 'numbers') {
+                document.getElementById('numbersSection').classList.remove('hidden');
+                footerNotice.classList.remove('hidden'); 
+            } else if (sectionName === 'cdr') {
+                document.getElementById('cdrSection').classList.remove('hidden');
+                footerNotice.classList.remove('hidden'); 
+            } else if (sectionName === 'access') {
+                document.getElementById('accessSection').classList.remove('hidden');
+                footerNotice.classList.remove('hidden'); 
+            } else if (sectionName === 'activity') {
+                document.getElementById('activitySection').classList.remove('hidden');
+                footerNotice.classList.add('hidden');
+            } else if (sectionName === 'notifications') {
+                document.getElementById('notificationsSection').classList.remove('hidden');
+                footerNotice.classList.add('hidden');
+            }
 
             sidebar.classList.add('-translate-x-full');
             overlay.classList.add('hidden');
@@ -548,4 +563,4 @@
     </script>
 </body>
     </html>
-                            
+    
