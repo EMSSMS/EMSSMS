@@ -66,7 +66,7 @@
                             <input type="password" id="loginPass" placeholder="Enter Your Password" required class="w-full px-3 py-2.5 border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 outline-none focus:border-blue-600">
                         </div>
                         <div class="flex items-center justify-between bg-slate-50 dark:bg-slate-800 p-3 border border-slate-200 dark:border-slate-700 rounded-lg">
-                            <span id="captchaText" class="font-medium text-slate-700 dark:text-slate-200"></span>
+                            <span id="captchaText" class="font-bold text-slate-700 dark:text-slate-200"></span>
                             <input type="text" id="captchaInput" placeholder="Answer" required class="w-24 px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-900 text-center outline-none">
                         </div>
                         <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow transition">Sign In</button>
@@ -135,7 +135,7 @@
                 <!-- Main Pages Container -->
                 <main class="p-3 md:p-5 max-w-5xl mx-auto space-y-4">
                     
-                    <!-- 1. EXACT REFERENCE MATCHED SMS DASHBOARD SECTION -->
+                    <!-- 1. PERFECT CLEAN SMS DASHBOARD MATCHING EXACT REFERENCE -->
                     <div id="dashboardSection" class="space-y-4">
                         <div>
                             <h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">SMS Dashboard</h1>
@@ -245,7 +245,7 @@
                         </div>
                         <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 shadow-sm space-y-3 text-xs">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-                                <input type="text" value="2026-07-22 00:00:00" class="border border-slate-300 dark:border-slate-7                             <input type="text" value="2026-07-22 23:59:59" class="border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-200">
+                                <input type="text" value="2026-07-22 00:00:00" class="border border-slate-300 dark:border-sl                                 <input type="text" value="2026-07-22 23:59:59" class="border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-200">
                             </div>
                             <div class="overflow-x-auto pt-2">
                                 <table class="w-full text-left border-collapse border border-slate-200 dark:border-slate-700">
@@ -462,8 +462,14 @@
             captchaNum1 = Math.floor(Math.random() * 8) + 1;
             captchaNum2 = Math.floor(Math.random() * 8) + 1;
             expectedCaptcha = captchaNum1 + captchaNum2;
-            document.getElementById('captchaText').innerText = 'What is ' + captchaNum1 + ' + ' + captchaNum2 + ' = ?';
-            document.getElementById('captchaInput').value = '';
+            const captchaEl = document.getElementById('captchaText');
+            if (captchaEl) {
+                captchaEl.innerText = 'What is ' + captchaNum1 + ' + ' + captchaNum2 + ' = ?';
+            }
+            const captchaInputEl = document.getElementById('captchaInput');
+            if (captchaInputEl) {
+                captchaInputEl.value = '';
+            }
         }
 
         function handleLogin(event) {
@@ -509,8 +515,133 @@
         const overlay = document.getElementById('sidebarOverlay');
         const themeIcon = document.getElementById('themeIcon');
         const profileMenu = document.getElementById('profileMenu');
-        const settingsDrawer = document.getElementById('settingsDrawer');
+        const settingsD 
+        rawler = document.getElementById('settingsDrawer');
         const settingsOverlay = document.getElementById('settingsOverlay');
 
         function setPrimaryColor(color) {
-            document.docu
+            document.documentElement.style.setProperty('--primary-color', color);
+        }
+        function setBgColor(bgColor, textColor) {
+            document.documentElement.style.setProperty('--bg-color', bgColor);
+            document.documentElement.style.setProperty('--text-color', textColor);
+            if(bgColor === '#0f172a' || bgColor === '#020617' || bgColor === '#022c22') {
+                document.getElementById('darkRadio').checked = true;
+                themeIcon.className = 'fa-solid fa-sun';
+            } else {
+                document.getElementById('lightRadio').checked = true;
+                themeIcon.className = 'fa-solid fa-moon';
+            }
+        }
+        function setMenuColor(color) {
+            document.documentElement.style.setProperty('--menu-bg', color);
+        }
+        function setHeaderColor(color) {
+            document.documentElement.style.setProperty('--header-bg', color);
+        }
+
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            const currentBg = getComputedStyle(document.documentElement).getPropertyValue('--bg-color').trim();
+            if(currentBg === '#f8fafc') {
+                setBgColor('#0f172a', '#f8fafc');
+            } else {
+                setBgColor('#f8fafc', '#1e293b');
+            }
+        });
+
+        document.getElementById('sidebarToggle').addEventListener('click', () => {
+            sidebar.classList.remove('-translate-x-full');
+            overlay.classList.remove('hidden');
+        });
+        document.getElementById('closeSidebar').addEventListener('click', () => {
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+        });
+        overlay.addEventListener('click', () => {
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+        });
+
+        document.getElementById('profileDropdownToggle').addEventListener('click', (e) => {
+            e.stopPropagation();
+            profileMenu.classList.toggle('hidden');
+        });
+        window.addEventListener('click', () => profileMenu.classList.add('hidden'));
+
+        document.getElementById('settingsToggle').addEventListener('click', () => {
+            settingsDrawer.classList.remove('translate-x-full');
+            settingsOverlay.classList.remove('hidden');
+        });
+        document.getElementById('closeSettings').addEventListener('click', () => {
+            settingsDrawer.classList.add('translate-x-full');
+            settingsOverlay.classList.add('hidden');
+        });
+        settingsOverlay.addEventListener('click', () => {
+            settingsDrawer.classList.add('translate-x-full');
+            settingsOverlay.classList.add('hidden');
+        });
+
+        function switchTab(tab) {
+            const stylesTab = document.getElementById('themeStylesTab');
+            const colorsTab = document.getElementById('themeColorsTab');
+            const stylesBtn = document.getElementById('tabStylesBtn');
+            const colorsBtn = document.getElementById('tabColorsBtn');
+
+            if (tab === 'styles') {
+                stylesTab.classList.remove('hidden');
+                colorsTab.classList.add('hidden');
+                stylesBtn.className = 'py-2.5 text-emerald-600 border-b-2 border-emerald-600 font-semibold';
+                colorsBtn.className = 'py-2.5 text-slate-500 dark:text-slate-400';
+            } else {
+                colorsTab.classList.remove('hidden');
+                stylesTab.classList.add('hidden');
+                colorsBtn.className = 'py-2.5 text-emerald-600 border-b-2 border-emerald-600 font-semibold';
+                stylesBtn.className = 'py-2.5 text-slate-500 dark:text-slate-400';
+            }
+        }
+
+        function showSection(sectionName) {
+            document.getElementById('dashboardSection').classList.add('hidden');
+            document.getElementById('numbersSection').classList.add('hidden');
+            document.getElementById('cdrSection').classList.add('hidden');
+            document.getElementById('accessSection').classList.add('hidden');
+            document.getElementById('activitySection').classList.add('hidden');
+            document.getElementById('notificationsSection').classList.add('hidden');
+            document.getElementById('ankoshOSSection').classList.add('hidden');
+
+            const footerNotice = document.getElementById('pageFooterNotice');
+
+            if (sectionName === 'dashboard') {
+                document.getElementById('dashboardSection').classList.remove('hidden');
+                footerNotice.classList.add('hidden'); 
+            } else if (sectionName === 'numbers') {
+                document.getElementById('numbersSection').classList.remove('hidden');
+                footerNotice.classList.remove('hidden'); 
+            } else if (sectionName === 'cdr') {
+                document.getElementById('cdrSection').classList.remove('hidden');
+                footerNotice.classList.remove('hidden'); 
+            } else if (sectionName === 'access') {
+                document.getElementById('accessSection').classList.remove('hidden');
+                footerNotice.classList.add('hidden');
+            } else if (sectionName === 'activity') {
+                document.getElementById('activitySection').classList.remove('hidden');
+                footerNotice.classList.add('hidden');
+            } else if (sectionName === 'notifications') {
+                document.getElementById('notificationsSection').classList.remove('hidden');
+                footerNotice.classList.add('hidden');
+            } else if (sectionName === 'ankoshOS') {
+                document.getElementById('ankoshOSSection').classList.remove('hidden');
+                footerNotice.classList.add('hidden');
+            }
+
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+            profileMenu.classList.add('hidden');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            generateCaptcha();
+        });
+    </script>
+</body>
+</html>
