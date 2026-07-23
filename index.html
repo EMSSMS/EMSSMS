@@ -65,9 +65,9 @@
                             <label class="block font-medium mb-1 text-slate-600 dark:text-slate-300">Password</label>
                             <input type="password" id="loginPass" placeholder="Enter Your Password" required class="w-full px-3 py-2.5 border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 outline-none focus:border-blue-600">
                         </div>
-                        <div class="flex items-center justify-between">
-                            <span id="captchaText" class="font-medium text-slate-600 dark:text-slate-300"></span>
-                            <input type="text" id="captchaInput" placeholder="Answer" required class="w-24 px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-800 text-center outline-none">
+                        <div class="flex items-center justify-between bg-slate-50 dark:bg-slate-800 p-3 border border-slate-200 dark:border-slate-700 rounded-lg">
+                            <span id="captchaText" class="font-medium text-slate-700 dark:text-slate-200"></span>
+                            <input type="text" id="captchaInput" placeholder="Answer" required class="w-24 px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-900 text-center outline-none">
                         </div>
                         <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow transition">Sign In</button>
                     </form>
@@ -78,8 +78,8 @@
         <!-- ========== MAIN APP DASHBOARD VIEW ========== -->
         <div id="mainAppView" class="view hidden flex-1 flex flex-col justify-between">
             <div>
-                <!-- Top Navbar -->
-                <header id="pageHeader" class="border-b border-slate-200 dark:border-slate-800 sticky top-0 z-30 px-4 py-2.5 flex items-center justify-between transition-colors duration-300" style="background-color: var(--header-bg);">
+                <!-- Top Navbar matching exact reference branding -->
+                <header id="pageHeader" class="border-b border-slate-200 dark:border-slate-800 sticky top-0 z-30 px-4 py-2.5 flex items-center justify-between transition-colors duration-300 shadow-sm" style="background-color: var(--header-bg);">
                     <div class="flex items-center space-x-3">
                         <button id="sidebarToggle" class="text-slate-600 dark:text-slate-300 text-lg focus:outline-none p-1">
                             <i class="fa-solid fa-bars"></i>
@@ -135,32 +135,56 @@
                 <!-- Main Pages Container -->
                 <main class="p-3 md:p-5 max-w-5xl mx-auto space-y-4">
                     
-                    <!-- 1. DASHBOARD SECTION -->
+                    <!-- 1. EXACT REFERENCE MATCHED SMS DASHBOARD SECTION -->
                     <div id="dashboardSection" class="space-y-4">
                         <div>
-                            <h1 class="text-xl font-bold tracking-tight">EMS SMS Panel ♥️ Dashboard</h1>
+                            <h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">SMS Dashboard</h1>
                             <p class="text-xs text-slate-500 dark:text-slate-400">View Summarized Stats & Reports</p>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                            <div class="bg-gradient-to-r from-blue-600 to-blue-500 text-white p-4 rounded-xl shadow-sm">
-                                <p class="text-[10px] font-semibold uppercase opacity-90">Today SMS</p>
-                                <h2 class="text-2xl font-bold mt-0.5">0</h2>
-                                <p class="text-[10px] opacity-90">SMS Recived Today</p>
+                        <div class="grid grid-cols-1 gap-3.5">
+                            <!-- Today SMS Card -->
+                            <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-5 rounded-2xl shadow-md relative overflow-hidden flex items-center justify-between">
+                                <div>
+                                    <p class="text-[11px] font-bold uppercase tracking-wider opacity-90 mb-1">TODAY SMS</p>
+                                    <h2 class="text-3xl font-extrabold tracking-tight mb-1">113</h2>
+                                    <p class="text-xs opacity-90">SMS Recived Today</p>
+                                </div>
+                                <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white text-sm">
+                                    <i class="fa-solid fa-arrow-up"></i>
+                                </div>
                             </div>
-                            <div class="bg-gradient-to-r from-rose-500 to-pink-500 text-white p-4 rounded-xl shadow-sm">
-                                <p class="text-[10px] font-semibold uppercase opacity-90">Yesterday SMS</p>
-                                <h2 class="text-2xl font-bold mt-0.5">0</h2>
-                                <p class="text-[10px] opacity-90">These received yesterday</p>
+                            <!-- Yesterday SMS Card -->
+                            <div class="bg-gradient-to-r from-rose-400 to-rose-500 text-white p-5 rounded-2xl shadow-md relative overflow-hidden flex items-center justify-between">
+                                <div>
+                                    <p class="text-[11px] font-bold uppercase tracking-wider opacity-90 mb-1">YESTERDAY SMS</p>
+                                    <h2 class="text-3xl font-extrabold tracking-tight mb-1">902</h2>
+                                    <p class="text-xs opacity-90">These received yesterday</p>
+                                </div>
+                                <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white text-sm">
+                                    <i class="fa-solid fa-arrow-down"></i>
+                                </div>
                             </div>
-                            <div class="bg-gradient-to-r from-emerald-500 to-teal-500 text-white p-4 rounded-xl shadow-sm">
-                                <p class="text-[10px] font-semibold uppercase opacity-90">Last 7 Days</p>
-                                <h2 class="text-2xl font-bold mt-0.5">0</h2>
-                                <p class="text-[10px] opacity-90">Received in last 7 days</p>
+                            <!-- Last 7 Days Card -->
+                            <div class="bg-gradient-to-r from-emerald-500 to-teal-500 text-white p-5 rounded-2xl shadow-md relative overflow-hidden flex items-center justify-between">
+                                <div>
+                                    <p class="text-[11px] font-bold uppercase tracking-wider opacity-90 mb-1">Last 7 Days</p>
+                                    <h2 class="text-3xl font-extrabold tracking-tight mb-1">4318</h2>
+                                    <p class="text-xs opacity-90">Received in last 7 days</p>
+                                </div>
+                                <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white text-sm">
+                                    <i class="fa-solid fa-arrow-up"></i>
+                                </div>
                             </div>
-                            <div class="bg-gradient-to-r from-amber-500 to-orange-500 text-white p-4 rounded-xl shadow-sm">
-                                <p class="text-[10px] font-semibold uppercase opacity-90">SMS This Month</p>
-                                <h2 class="text-2xl font-bold mt-0.5">0</h2>
-                                <p class="text-[10px] opacity-90">SMS Received in current month</p>
+                            <!-- SMS This Month Card -->
+                            <div class="bg-gradient-to-r from-amber-500 to-orange-500 text-white p-5 rounded-2xl shadow-md relative overflow-hidden flex items-center justify-between">
+                                <div>
+                                    <p class="text-[11px] font-bold uppercase tracking-wider opacity-90 mb-1">SMS This Month</p>
+                                    <h2 class="text-3xl font-extrabold tracking-tight mb-1">26617</h2>
+                                    <p class="text-xs opacity-90">SMS Received in current month</p>
+                                </div>
+                                <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white text-sm">
+                                    <i class="fa-solid fa-arrow-down"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -221,8 +245,7 @@
                         </div>
                         <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 shadow-sm space-y-3 text-xs">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-                                <input type="text" value="2026-07-22 00:00:00" class="border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-200">
-                                <input type="text" value="2026-07-22 23:59:59" class="border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-200">
+                                <input type="text" value="2026-07-22 00:00:00" class="border border-slate-300 dark:border-slate-7                             <input type="text" value="2026-07-22 23:59:59" class="border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-200">
                             </div>
                             <div class="overflow-x-auto pt-2">
                                 <table class="w-full text-left border-collapse border border-slate-200 dark:border-slate-700">
@@ -359,5 +382,135 @@
             </footer>
         </div>
 
-                                </div>
-    
+    </div>
+
+    <!-- Switcher Drawer Panel -->
+    <div id="settingsOverlay" class="fixed inset-0 bg-black/50 z-50 hidden"></div>
+    <div id="settingsDrawer" class="fixed top-0 right-0 w-80 md:w-96 h-full bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 z-50 transform translate-x-full transition-transform duration-300 flex flex-col text-xs shadow-2xl">
+        <div class="p-3.5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+            <h3 class="font-bold text-sm">Switcher</h3>
+            <button id="closeSettings" class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"><i class="fa-solid fa-xmark text-base"></i></button>
+        </div>
+        <div class="grid grid-cols-2 text-center font-medium border-b border-slate-200 dark:border-slate-800">
+            <button id="tabStylesBtn" onclick="switchTab('styles')" class="py-2.5 text-slate-500 dark:text-slate-400">Theme Styles</button>
+            <button id="tabColorsBtn" onclick="switchTab('colors')" class="py-2.5 text-emerald-600 border-b-2 border-emerald-600 font-semibold">Theme Colors</button>
+        </div>
+        <div class="flex-1 overflow-y-auto p-4 space-y-5">
+            <div id="themeColorsTab" class="space-y-4">
+                <div>
+                    <p class="font-semibold text-slate-700 dark:text-slate-300 mb-2">Menu Colors:</p>
+                    <div class="flex items-center space-x-2.5">
+                        <div class="w-7 h-7 rounded-full bg-white border border-slate-300 cursor-pointer" onclick="setMenuColor('#ffffff')"></div>
+                        <div class="w-7 h-7 rounded-full bg-slate-900 border border-slate-700 cursor-pointer" onclick="setMenuColor('#0f172a')"></div>
+                        <div class="w-7 h-7 rounded-full bg-blue-600 cursor-pointer" onclick="setMenuColor('#2563eb')"></div>
+                        <div class="w-7 h-7 rounded-full bg-emerald-600 cursor-pointer" onclick="setMenuColor('#059669')"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="font-semibold text-slate-700 dark:text-slate-300 mb-2">Header Colors:</p>
+                    <div class="flex items-center space-x-2.5">
+                        <div class="w-7 h-7 rounded-full bg-white border border-slate-300 cursor-pointer" onclick="setHeaderColor('#ffffff')"></div>
+                        <div class="w-7 h-7 rounded-full bg-slate-900 border border-slate-700 cursor-pointer" onclick="setHeaderColor('#0f172a')"></div>
+                        <div class="w-7 h-7 rounded-full bg-blue-600 cursor-pointer" onclick="setHeaderColor('#2563eb')"></div>
+                        <div class="w-7 h-7 rounded-full bg-indigo-900 cursor-pointer" onclick="setHeaderColor('#311042')"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="font-semibold text-slate-700 dark:text-slate-300 mb-2">Theme Primary:</p>
+                    <div class="flex items-center space-x-2.5">
+                        <div class="w-6 h-6 rounded-full bg-blue-700 cursor-pointer" onclick="setPrimaryColor('#1d4ed8')"></div>
+                        <div class="w-6 h-6 rounded-full bg-cyan-500 cursor-pointer" onclick="setPrimaryColor('#06b6d4')"></div>
+                        <div class="w-6 h-6 rounded-full bg-purple-500 cursor-pointer" onclick="setPrimaryColor('#a855f7')"></div>
+                        <div class="w-6 h-6 rounded-full bg-emerald-500 cursor-pointer" onclick="setPrimaryColor('#10b981')"></div>
+                        <div class="w-6 h-6 rounded-full bg-rose-500 cursor-pointer" onclick="setPrimaryColor('#f43f5e')"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="font-semibold text-slate-700 dark:text-slate-300 mb-2">Theme Background:</p>
+                    <div class="flex items-center space-x-2.5">
+                        <div class="w-6 h-6 rounded-full bg-slate-100 border cursor-pointer" onclick="setBgColor('#f8fafc', '#1e293b')"></div>
+                        <div class="w-6 h-6 rounded-full bg-slate-900 border cursor-pointer" onclick="setBgColor('#0f172a', '#f8fafc')"></div>
+                        <div class="w-6 h-6 rounded-full bg-indigo-950 border cursor-pointer" onclick="setBgColor('#020617', '#ffffff')"></div>
+                        <div class="w-6 h-6 rounded-full bg-emerald-950 border cursor-pointer" onclick="setBgColor('#022c22', '#ffffff')"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="themeStylesTab" class="space-y-3 hidden">
+                <div>
+                    <p class="font-semibold mb-1 text-slate-700 dark:text-slate-300">Theme Color Mode:</p>
+                    <div class="flex space-x-4">
+                        <label class="flex items-center space-x-1.5"><input type="radio" name="mode" id="lightRadio" onclick="setBgColor('#f8fafc', '#1e293b')"><span>Light</span></label>
+                        <label class="flex items-center space-x-1.5"><input type="radio" name="mode" id="darkRadio" onclick="setBgColor('#0f172a', '#f8fafc')" checked><span>Dark</span></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="p-3 border-t border-slate-200 dark:border-slate-800">
+            <button onclick="location.reload()" class="w-full bg-rose-500 hover:bg-rose-600 text-white font-medium py-2 rounded-lg text-xs">Reset</button>
+        </div>
+    </div>
+
+    <!-- Script Logic -->
+    <script>
+        let captchaNum1, captchaNum2, expectedCaptcha;
+
+        function generateCaptcha() {
+            captchaNum1 = Math.floor(Math.random() * 8) + 1;
+            captchaNum2 = Math.floor(Math.random() * 8) + 1;
+            expectedCaptcha = captchaNum1 + captchaNum2;
+            document.getElementById('captchaText').innerText = 'What is ' + captchaNum1 + ' + ' + captchaNum2 + ' = ?';
+            document.getElementById('captchaInput').value = '';
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const u = document.getElementById('loginUser').value.trim();
+            const p = document.getElementById('loginPass').value.trim();
+            const c = parseInt(document.getElementById('captchaInput').value.trim(), 10);
+            const err = document.getElementById('loginError');
+
+            err.classList.add('hidden');
+            err.innerText = '';
+
+            if (isNaN(c) || c !== expectedCaptcha) {
+                err.classList.remove('hidden');
+                err.innerText = 'Incorrect Captcha answer. Please try again.';
+                generateCaptcha();
+                return;
+            }
+
+            if (u !== 'test123' || p !== 'test123$$') {
+                err.classList.remove('hidden');
+                err.innerText = 'Invalid username or password.';
+                generateCaptcha();
+                return;
+            }
+
+            document.getElementById('loginView').classList.add('hidden');
+            document.getElementById('mainAppView').classList.remove('hidden');
+            document.getElementById('profileUsernameDisplay').innerText = u;
+            showSection('dashboard');
+        }
+
+        function logout() {
+            document.getElementById('mainAppView').classList.add('hidden');
+            document.getElementById('loginView').classList.remove('hidden');
+            document.getElementById('loginUser').value = '';
+            document.getElementById('loginPass').value = '';
+            document.getElementById('pageFooterNotice').classList.add('hidden');
+            generateCaptcha();
+        }
+
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        const themeIcon = document.getElementById('themeIcon');
+        const profileMenu = document.getElementById('profileMenu');
+        const settingsDrawer = document.getElementById('settingsDrawer');
+        const settingsOverlay = document.getElementById('settingsOverlay');
+
+        function setPrimaryColor(color) {
+            document.docu
