@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,14 +25,14 @@
         body { font-family: 'Inter', sans-serif; }
         :root { 
             --primary-color: #2563eb; 
-            --bg-color: #f8fafc;
-            --text-color: #1e293b;
-            --header-bg: #ffffff;
-            --menu-bg: #ffffff;
+            --bg-color: #000000;
+            --text-color: #f8fafc;
+            --header-bg: #09090b;
+            --menu-bg: #09090b;
         }
     </style>
 </head>
-<body id="pageBody" class="min-h-screen flex flex-col justify-between transition-colors duration-300" style="background-color: var(--bg-color); color: var(--text-color);">
+<body id="pageBody" class="min-h-screen flex flex-col justify-between transition-colors duration-300 bg-black text-slate-100" style="background-color: var(--bg-color); color: var(--text-color);">
 
     <!-- VIEWS CONTAINER -->
     <div id="appContainer" class="flex-1 flex flex-col">
@@ -40,34 +40,35 @@
         <!-- ========== LOGIN VIEW (Original Full-Height Split Screen Layout) ========== -->
         <div id="loginView" class="view active flex-1 flex flex-col md:flex-row h-screen overflow-hidden">
             <!-- Left Side Banner Image filling exact half height/width -->
-            <div class="hidden md:flex md:w-1/2 bg-blue-100 dark:bg-slate-900 items-center justify-center relative overflow-hidden">
-                <img src="https://ems-sms-logo.edgeone.dev/Screenshot_20260722-194354__01.jpg" alt="EMS SMS Login Left Banner" class="w-full h-full object-cover">
+            <div class="hidden md:flex md:w-1/2 bg-black items-center justify-center relative overflow-hidden">
+                <img src="https://ems-sms-logo.edgeone.dev/Screenshot_20260722-194354__01.jpg" alt="EMS SMS Login Left Banner" class="w-full h-full object-cover opacity-80">
             </div>
 
             <!-- Right Side Login Form -->
-            <div class="flex-1 flex items-center justify-center p-6 bg-white dark:bg-slate-900 overflow-y-auto">
+            <div class="flex-1 flex items-center justify-center p-6 bg-black overflow-y-auto">
                 <div class="w-full max-w-md space-y-6">
                     <div class="text-left">
                         <p class="text-xs font-semibold text-rose-500 mb-2">Accounts are free and always will be.</p>
                         <img src="https://ems-sms.edgeone.dev/7c0bd812-5290-4d5d-9812-7840a6acb5a7-removebg-preview.png" alt="EMS SMS Logo" class="h-8 object-contain mb-4">
-                        <h2 class="text-xl font-bold text-slate-800 dark:text-white mb-1">Welcome back!</h2>
-                        <p class="text-xs text-slate-500 dark:text-slate-400">Please sign in to continue.</p>
+                        <h2 class="text-xl font-bold text-white mb-1">Welcome back!</h2>
+                        <p class="text-xs text-slate-400">Please sign in to continue.</p>
                     </div>
 
-                    <div id="loginError" class="bg-red-100 text-red-600 text-xs p-2.5 rounded-lg hidden"></div>
+                    <div id="loginError" class="bg-red-950/80 border border-red-800 text-red-400 text-xs p-2.5 rounded-lg hidden"></div>
 
                     <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-4 text-xs">
                         <div>
-                            <label class="block font-medium mb-1 text-slate-600 dark:text-slate-300">Username</label>
-                            <input type="text" id="loginUser" placeholder="Enter Your Username" required class="w-full px-3 py-2.5 border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 outline-none focus:border-blue-600">
+                            <label class="block font-medium mb-1 text-slate-300">Username</label>
+                            <input type="text" id="loginUser" placeholder="Enter Your Username" required class="w-full px-3 py-2.5 border border-zinc-800 rounded-lg bg-zinc-950 text-white outline-none focus:border-blue-600">
                         </div>
                         <div>
-                            <label class="block font-medium mb-1 text-slate-600 dark:text-slate-300">Password</label>
-                            <input type="password" id="loginPass" placeholder="Enter Your Password" required class="w-full px-3 py-2.5 border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 outline-none focus:border-blue-600">
+                            <label class="block font-medium mb-1 text-slate-300">Password</label>
+                            <input type="password" id="loginPass" placeholder="Enter Your Password" required class="w-full px-3 py-2.5 border border-zinc-800 rounded-lg bg-zinc-950 text-white outline-none focus:border-blue-600">
                         </div>
-                        <div class="flex items-center justify-between bg-slate-50 dark:bg-slate-800 p-3 border border-slate-200 dark:border-slate-700 rounded-lg">
-                            <span id="captchaText" class="font-bold text-slate-700 dark:text-slate-200 text-sm select-none">Loading...</span>
-                            <input type="text" id="captchaInput" placeholder="Answer" required class="w-24 px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-900 text-center text-slate-800 dark:text-slate-100 outline-none">
+                        <!-- Pure black styling with adjusted sizing & compact captcha elements -->
+                        <div class="flex items-center justify-between bg-zinc-950 p-2.5 border border-zinc-800 rounded-lg">
+                            <span id="captchaText" class="font-bold text-white text-xs select-none tracking-tight">Loading...</span>
+                            <input type="text" id="captchaInput" placeholder="Answer" required class="w-16 px-2 py-1.5 border border-zinc-800 rounded-md bg-black text-center text-white text-xs outline-none focus:border-blue-600">
                         </div>
                         <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow transition">Sign In</button>
                     </form>
@@ -79,9 +80,9 @@
         <div id="mainAppView" class="view hidden flex-1 flex flex-col justify-between">
             <div>
                 <!-- Top Navbar matching exact reference branding -->
-                <header id="pageHeader" class="border-b border-slate-200 dark:border-slate-800 sticky top-0 z-30 px-4 py-2.5 flex items-center justify-between transition-colors duration-300 shadow-sm" style="background-color: var(--header-bg);">
+                <header id="pageHeader" class="border-b border-zinc-800 sticky top-0 z-30 px-4 py-2.5 flex items-center justify-between transition-colors duration-300 shadow-sm bg-zinc-950">
                     <div class="flex items-center space-x-3">
-                        <button id="sidebarToggle" class="text-slate-600 dark:text-slate-300 text-lg focus:outline-none p-1">
+                        <button id="sidebarToggle" class="text-slate-300 text-lg focus:outline-none p-1">
                             <i class="fa-solid fa-bars"></i>
                         </button>
                         <div class="flex items-center">
@@ -90,45 +91,45 @@
                     </div>
 
                     <div class="flex items-center space-x-3">
-                        <button id="themeToggle" class="text-slate-600 dark:text-slate-300 text-base focus:outline-none">
-                            <i id="themeIcon" class="fa-solid fa-moon"></i>
+                        <button id="themeToggle" class="text-slate-300 text-base focus:outline-none">
+                            <i id="themeIcon" class="fa-solid fa-sun"></i>
                         </button>
 
                         <div class="relative">
-                            <button id="profileDropdownToggle" class="w-8 h-8 rounded-full bg-slate-300 dark:bg-slate-700 flex items-center justify-center overflow-hidden focus:outline-none">
-                                <i class="fa-solid fa-user text-slate-600 dark:text-slate-300 text-xs"></i>
+                            <button id="profileDropdownToggle" class="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center overflow-hidden focus:outline-none">
+                                <i class="fa-solid fa-user text-slate-300 text-xs"></i>
                             </button>
-                            <div id="profileMenu" class="hidden absolute right-0 mt-2 w-60 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-xl py-2 z-50 text-xs">
-                                <div class="px-3 py-2 border-b border-slate-100 dark:border-slate-700 bg-blue-600 text-white rounded-t-lg">
+                            <div id="profileMenu" class="hidden absolute right-0 mt-2 w-60 bg-zinc-950 border border-zinc-800 rounded-lg shadow-xl py-2 z-50 text-xs">
+                                <div class="px-3 py-2 border-b border-zinc-800 bg-blue-600 text-white rounded-t-lg">
                                     <p class="font-semibold" id="profileUsernameDisplay">test123</p>
                                     <p class="text-[10px] text-blue-100">Test Account</p>
                                 </div>
-                                <a href="#" onclick="showSection('activity')" class="flex items-center px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-700 dark:text-slate-200"><i class="fa-solid fa-gear w-4 mr-2 text-slate-500"></i> My Activity</a>
-                                <a href="#" onclick="showSection('notifications')" class="flex items-center px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-700 dark:text-slate-200"><i class="fa-solid fa-envelope w-4 mr-2 text-slate-500"></i> Notifications</a>
-                                <div class="border-t border-slate-100 dark:border-slate-700 my-1"></div>
-                                <a href="#" onclick="logout()" class="flex items-center px-3 py-2 text-red-600 hover:bg-slate-100 dark:hover:bg-slate-700"><i class="fa-solid fa-right-from-bracket w-4 mr-2"></i> Sign Out</a>
+                                <a href="#" onclick="showSection('activity')" class="flex items-center px-3 py-2 hover:bg-zinc-900 text-slate-200"><i class="fa-solid fa-gear w-4 mr-2 text-slate-400"></i> My Activity</a>
+                                <a href="#" onclick="showSection('notifications')" class="flex items-center px-3 py-2 hover:bg-zinc-900 text-slate-200"><i class="fa-solid fa-envelope w-4 mr-2 text-slate-400"></i> Notifications</a>
+                                <div class="border-t border-zinc-800 my-1"></div>
+                                <a href="#" onclick="logout()" class="flex items-center px-3 py-2 text-red-500 hover:bg-zinc-900"><i class="fa-solid fa-right-from-bracket w-4 mr-2"></i> Sign Out</a>
                             </div>
                         </div>
 
-                        <button id="settingsToggle" class="text-slate-600 dark:text-slate-300 text-base focus:outline-none">
+                        <button id="settingsToggle" class="text-slate-300 text-base focus:outline-none">
                             <i class="fa-solid fa-gear"></i>
                         </button>
                     </div>
                 </header>
 
                 <!-- Sidebar Navigation Drawer -->
-                <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
-                <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full border-r border-slate-200 dark:border-slate-800 z-50 transform -translate-x-full transition-transform duration-300 flex flex-col text-xs shadow-xl" style="background-color: var(--menu-bg);">
-                    <div class="p-3 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                <div id="sidebarOverlay" class="fixed inset-0 bg-black/60 z-40 hidden"></div>
+                <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full border-r border-zinc-800 z-50 transform -translate-x-full transition-transform duration-300 flex flex-col text-xs shadow-xl bg-zinc-950">
+                    <div class="p-3 border-b border-zinc-800 flex items-center justify-between">
                         <span class="font-bold tracking-wider text-slate-400 uppercase text-[10px]">MAIN MENU</span>
-                        <button id="closeSidebar" class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"><i class="fa-solid fa-xmark text-base"></i></button>
+                        <button id="closeSidebar" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-base"></i></button>
                     </div>
                     <nav class="p-3 space-y-1 flex-1">
-                        <a href="#" onclick="showSection('dashboard')" class="flex items-center space-x-2.5 px-2.5 py-2 rounded-lg font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"><i class="fa-solid fa-border-all text-blue-600"></i> <span>Dashboard</span></a>
-                        <a href="#" onclick="showSection('numbers')" class="flex items-center space-x-2.5 px-2.5 py-2 rounded-lg font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"><i class="fa-solid fa-chart-pie text-blue-600"></i> <span>SMS Test Numbers</span></a>
-                        <a href="#" onclick="showSection('cdr')" class="flex items-center space-x-2.5 px-2.5 py-2 rounded-lg font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"><i class="fa-solid fa-chart-column text-blue-600"></i> <span>SMS CDR Stats</span></a>
-                        <a href="#" onclick="showSection('access')" class="flex items-center space-x-2.5 px-2.5 py-2 rounded-lg font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"><i class="fa-solid fa-file-lines text-blue-600"></i> <span>SMS Access List</span></a>
-                        <a href="#" onclick="showSection('ankoshOS')" class="flex items-center space-x-2.5 px-2.5 py-2 rounded-lg font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"><i class="fa-solid fa-laptop-code text-blue-600"></i> <span>Andkosh OS</span></a>
+                        <a href="#" onclick="showSection('dashboard')" class="flex items-center space-x-2.5 px-2.5 py-2 rounded-lg font-medium text-slate-200 hover:bg-zinc-900"><i class="fa-solid fa-border-all text-blue-500"></i> <span>Dashboard</span></a>
+                        <a href="#" onclick="showSection('numbers')" class="flex items-center space-x-2.5 px-2.5 py-2 rounded-lg font-medium text-slate-200 hover:bg-zinc-900"><i class="fa-solid fa-chart-pie text-blue-500"></i> <span>SMS Test Numbers</span></a>
+                        <a href="#" onclick="showSection('cdr')" class="flex items-center space-x-2.5 px-2.5 py-2 rounded-lg font-medium text-slate-200 hover:bg-zinc-900"><i class="fa-solid fa-chart-column text-blue-500"></i> <span>SMS CDR Stats</span></a>
+                        <a href="#" onclick="showSection('access')" class="flex items-center space-x-2.5 px-2.5 py-2 rounded-lg font-medium text-slate-200 hover:bg-zinc-900"><i class="fa-solid fa-file-lines text-blue-500"></i> <span>SMS Access List</span></a>
+                        <a href="#" onclick="showSection('ankoshOS')" class="flex items-center space-x-2.5 px-2.5 py-2 rounded-lg font-medium text-slate-200 hover:bg-zinc-900"><i class="fa-solid fa-laptop-code text-blue-500"></i> <span>Andkosh OS</span></a>
                     </nav>
                 </aside>
 
@@ -138,51 +139,51 @@
                     <!-- 1. PERFECT CLEAN SMS DASHBOARD MATCHING EXACT REFERENCE -->
                     <div id="dashboardSection" class="space-y-4">
                         <div>
-                            <h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">SMS Dashboard</h1>
-                            <p class="text-xs text-slate-500 dark:text-slate-400">View Summarized Stats & Reports</p>
+                            <h1 class="text-xl font-bold tracking-tight text-white">SMS Dashboard</h1>
+                            <p class="text-xs text-slate-400">View Summarized Stats & Reports</p>
                         </div>
                         <div class="grid grid-cols-1 gap-3.5">
                             <!-- Today SMS Card -->
-                            <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-5 rounded-2xl shadow-md relative overflow-hidden flex items-center justify-between">
+                            <div class="bg-gradient-to-r from-blue-900 to-blue-950 border border-blue-800 text-white p-5 rounded-2xl shadow-md relative overflow-hidden flex items-center justify-between">
                                 <div>
                                     <p class="text-[11px] font-bold uppercase tracking-wider opacity-90 mb-1">TODAY SMS</p>
                                     <h2 class="text-3xl font-extrabold tracking-tight mb-1">113</h2>
                                     <p class="text-xs opacity-90">SMS Recived Today</p>
                                 </div>
-                                <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white text-sm">
+                                <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white text-sm">
                                     <i class="fa-solid fa-arrow-up"></i>
                                 </div>
                             </div>
                             <!-- Yesterday SMS Card -->
-                            <div class="bg-gradient-to-r from-rose-400 to-rose-500 text-white p-5 rounded-2xl shadow-md relative overflow-hidden flex items-center justify-between">
+                            <div class="bg-gradient-to-r from-rose-950 to-zinc-950 border border-rose-900/50 text-white p-5 rounded-2xl shadow-md relative overflow-hidden flex items-center justify-between">
                                 <div>
                                     <p class="text-[11px] font-bold uppercase tracking-wider opacity-90 mb-1">YESTERDAY SMS</p>
                                     <h2 class="text-3xl font-extrabold tracking-tight mb-1">902</h2>
                                     <p class="text-xs opacity-90">These received yesterday</p>
                                 </div>
-                                <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white text-sm">
+                                <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white text-sm">
                                     <i class="fa-solid fa-arrow-down"></i>
                                 </div>
                             </div>
                             <!-- Last 7 Days Card -->
-                            <div class="bg-gradient-to-r from-emerald-500 to-teal-500 text-white p-5 rounded-2xl shadow-md relative overflow-hidden flex items-center justify-between">
+                            <div class="bg-gradient-to-r from-emerald-950 to-zinc-950 border border-emerald-900/50 text-white p-5 rounded-2xl shadow-md relative overflow-hidden flex items-center justify-between">
                                 <div>
                                     <p class="text-[11px] font-bold uppercase tracking-wider opacity-90 mb-1">Last 7 Days</p>
                                     <h2 class="text-3xl font-extrabold tracking-tight mb-1">4318</h2>
                                     <p class="text-xs opacity-90">Received in last 7 days</p>
                                 </div>
-                                <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white text-sm">
+                                <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white text-sm">
                                     <i class="fa-solid fa-arrow-up"></i>
                                 </div>
                             </div>
                             <!-- SMS This Month Card -->
-                            <div class="bg-gradient-to-r from-amber-500 to-orange-500 text-white p-5 rounded-2xl shadow-md relative overflow-hidden flex items-center justify-between">
+                            <div class="bg-gradient-to-r from-amber-950 to-zinc-950 border border-amber-900/50 text-white p-5 rounded-2xl shadow-md relative overflow-hidden flex items-center justify-between">
                                 <div>
                                     <p class="text-[11px] font-bold uppercase tracking-wider opacity-90 mb-1">SMS This Month</p>
                                     <h2 class="text-3xl font-extrabold tracking-tight mb-1">26617</h2>
                                     <p class="text-xs opacity-90">SMS Received in current month</p>
                                 </div>
-                                <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white text-sm">
+                                <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white text-sm">
                                     <i class="fa-solid fa-arrow-down"></i>
                                 </div>
                             </div>
@@ -192,20 +193,20 @@
                     <!-- 2. SMS TEST NUMBERS SECTION -->
                     <div id="numbersSection" class="space-y-4 hidden">
                         <div>
-                            <h1 class="text-xl font-bold tracking-tight">SMS Test Numbers</h1>
-                            <p class="text-xs text-slate-500 dark:text-slate-400"><a href="#" onclick="showSection('dashboard')" class="text-blue-600">Home</a> &rsaquo; SMS Test Numbers</p>
+                            <h1 class="text-xl font-bold tracking-tight text-white">SMS Test Numbers</h1>
+                            <p class="text-xs text-slate-400"><a href="#" onclick="showSection('dashboard')" class="text-blue-500">Home</a> &rsaquo; SMS Test Numbers</p>
                         </div>
-                        <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 shadow-sm space-y-3 text-xs">
-                            <select class="w-full border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-300">
+                        <div class="bg-zinc-950 border border-zinc-800 rounded-xl p-4 shadow-sm space-y-3 text-xs">
+                            <select class="w-full border border-zinc-800 rounded-lg px-3 py-2 bg-black text-slate-300">
                                 <option>Select Range</option>
                             </select>
                             <div>
-                                <button class="bg-rose-500 hover:bg-rose-600 text-white font-medium px-4 py-2 rounded-lg shadow-sm">Filter</button>
+                                <button class="bg-rose-600 hover:bg-rose-700 text-white font-medium px-4 py-2 rounded-lg shadow-sm">Filter</button>
                             </div>
-                            <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-100 dark:border-slate-700">
-                                <div class="flex items-center space-x-2">
+                            <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-zinc-800">
+                                <div class="flex items-center space-x-2 text-slate-300">
                                     <span>Show Records:</span>
-                                    <select class="border border-slate-300 dark:border-slate-700 rounded px-2 py-1 bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-200"><option>25</option></select>
+                                    <select class="border border-zinc-800 rounded px-2 py-1 bg-black text-slate-200"><option>25</option></select>
                                 </div>
                                 <div class="flex flex-wrap gap-1">
                                     <button class="bg-blue-600 text-white text-[11px] px-2.5 py-1 rounded">Copy</button>
@@ -215,22 +216,22 @@
                                     <button class="bg-blue-600 text-white text-[11px] px-2.5 py-1 rounded">Print</button>
                                 </div>
                             </div>
-                            <div class="flex items-center space-x-2 pt-1">
+                            <div class="flex items-center space-x-2 pt-1 text-slate-300">
                                 <span>Search:</span>
-                                <input type="text" class="border border-slate-300 dark:border-slate-700 rounded px-2 py-1 bg-slate-50 dark:bg-slate-900 max-w-xs flex-1 text-slate-700 dark:text-slate-200">
+                                <input type="text" class="border border-zinc-800 rounded px-2 py-1 bg-black max-w-xs flex-1 text-slate-200">
                             </div>
                             <div class="overflow-x-auto pt-2">
-                                <table class="w-full text-left border-collapse border border-slate-200 dark:border-slate-700">
+                                <table class="w-full text-left border-collapse border border-zinc-800">
                                     <thead>
-                                        <tr class="bg-slate-50 dark:bg-slate-900 text-slate-500 uppercase text-[10px]">
-                                            <th class="p-2.5 border border-slate-200 dark:border-slate-700">RANGE</th>
-                                            <th class="p-2.5 border border-slate-200 dark:border-slate-700">PREFIX</th>
-                                            <th class="p-2.5 border border-slate-200 dark:border-slate-700">NUMBER</th>
-                                            <th class="p-2.5 border border-slate-200 dark:border-slate-700">MY PAYTERM</th>
+                                        <tr class="bg-black text-slate-400 uppercase text-[10px]">
+                                            <th class="p-2.5 border border-zinc-800">RANGE</th>
+                                            <th class="p-2.5 border border-zinc-800">PREFIX</th>
+                                            <th class="p-2.5 border border-zinc-800">NUMBER</th>
+                                            <th class="p-2.5 border border-zinc-800">MY PAYTERM</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr><td colspan="4" class="p-6 text-center text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700">No data available in table</td></tr>
+                                        <tr><td colspan="4" class="p-6 text-center text-slate-400 border border-zinc-800">No data available in table</td></tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -240,32 +241,32 @@
                     <!-- 3. SMS CDR STATS SECTION -->
                     <div id="cdrSection" class="space-y-4 hidden">
                         <div>
-                            <h1 class="text-xl font-bold tracking-tight">SMS CDR Stats</h1>
-                            <p class="text-xs text-slate-500 dark:text-slate-400"><a href="#" onclick="showSection('dashboard')" class="text-blue-600">Home</a> &rsaquo; SMS CDR Stats</p>
+                            <h1 class="text-xl font-bold tracking-tight text-white">SMS CDR Stats</h1>
+                            <p class="text-xs text-slate-400"><a href="#" onclick="showSection('dashboard')" class="text-blue-500">Home</a> &rsaquo; SMS CDR Stats</p>
                         </div>
-                        <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 shadow-sm space-y-3 text-xs">
+                        <div class="bg-zinc-950 border border-zinc-800 rounded-xl p-4 shadow-sm space-y-3 text-xs">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-                                <input type="text" value="2                                 <input type="text" value="2026-07-22 00:00:00" class="border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-200">
-                                <input type="text" value="2026-07-22 23:59:59" class="border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-200">
+                                <input type="text" value="2026-07-22 00:00:00" class="border border-zinc-800 rounded-lg px-3 py-2 bg-black text-slate-200">
+                                <input type="text" value="2026-07-22 23:59:59" class="border border-zinc-800 rounded-lg px-3 py-2 bg-black text-slate-200">
                             </div>
                             <div class="overflow-x-auto pt-2">
-                                <table class="w-full text-left border-collapse border border-slate-200 dark:border-slate-700">
+                                <table class="w-full text-left border-collapse border border-zinc-800">
                                     <thead>
-                                        <tr class="bg-slate-50 dark:bg-slate-900 text-slate-500 uppercase text-[10px]">
-                                            <th class="p-2.5 border border-slate-200 dark:border-slate-700">DATE</th>
-                                            <th class="p-2.5 border border-slate-200 dark:border-slate-700">RANGE</th>
-                                            <th class="p-2.5 border border-slate-200 dark:border-slate-700">NUMBER</th>
-                                            <th class="p-2.5 border border-slate-200 dark:border-slate-700">CLI</th>
-                                            <th class="p-2.5 border border-slate-200 dark:border-slate-700">SMS</th>
+                                        <tr class="bg-black text-slate-400 uppercase text-[10px]">
+                                            <th class="p-2.5 border border-zinc-800">DATE</th>
+                                            <th class="p-2.5 border border-zinc-800">RANGE</th>
+                                            <th class="p-2.5 border border-zinc-800">NUMBER</th>
+                                            <th class="p-2.5 border border-zinc-800">CLI</th>
+                                            <th class="p-2.5 border border-zinc-800">SMS</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="p-3 border border-slate-200 dark:border-slate-700 font-semibold text-slate-700 dark:text-slate-200">Total SMS<br><span class="text-base font-bold text-slate-900 dark:text-white">0</span></td>
-                                            <td class="p-3 border border-slate-200 dark:border-slate-700"></td>
-                                            <td class="p-3 border border-slate-200 dark:border-slate-700"></td>
-                                            <td class="p-3 border border-slate-200 dark:border-slate-700"></td>
-                                            <td class="p-3 border border-slate-200 dark:border-slate-700"></td>
+                                            <td class="p-3 border border-zinc-800 font-semibold text-slate-200">Total SMS<br><span class="text-base font-bold text-white">0</span></td>
+                                            <td class="p-3 border border-zinc-800"></td>
+                                            <td class="p-3 border border-zinc-800"></td>
+                                            <td class="p-3 border border-zinc-800"></td>
+                                            <td class="p-3 border border-zinc-800"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -276,24 +277,24 @@
                     <!-- 4. SMS ACCESS LIST SECTION -->
                     <div id="accessSection" class="space-y-4 hidden">
                         <div>
-                            <h1 class="text-xl font-bold tracking-tight">SMS Access List</h1>
-                            <p class="text-xs text-slate-500 dark:text-slate-400"><a href="#" onclick="showSection('dashboard')" class="text-blue-600">Home</a> &rsaquo; SMS Access List</p>
+                            <h1 class="text-xl font-bold tracking-tight text-white">SMS Access List</h1>
+                            <p class="text-xs text-slate-400"><a href="#" onclick="showSection('dashboard')" class="text-blue-500">Home</a> &rsaquo; SMS Access List</p>
                         </div>
-                        <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 shadow-sm space-y-3 text-xs">
-                            <select class="w-full border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-300"><option>Select Range</option></select>
-                            <div><button class="bg-rose-500 hover:bg-rose-600 text-white font-medium px-4 py-2 rounded-lg shadow-sm">Filter</button></div>
+                        <div class="bg-zinc-950 border border-zinc-800 rounded-xl p-4 shadow-sm space-y-3 text-xs">
+                            <select class="w-full border border-zinc-800 rounded-lg px-3 py-2 bg-black text-slate-300"><option>Select Range</option></select>
+                            <div><button class="bg-rose-600 hover:bg-rose-700 text-white font-medium px-4 py-2 rounded-lg shadow-sm">Filter</button></div>
                             <div class="overflow-x-auto pt-2">
-                                <table class="w-full text-left border-collapse border border-slate-200 dark:border-slate-700">
+                                <table class="w-full text-left border-collapse border border-zinc-800">
                                     <thead>
-                                        <tr class="bg-slate-50 dark:bg-slate-900 text-slate-500 uppercase text-[10px]">
-                                            <th class="p-2.5 border border-slate-200 dark:border-slate-700">RANGE</th>
-                                            <th class="p-2.5 border border-slate-200 dark:border-slate-700">PREFIX</th>
-                                            <th class="p-2.5 border border-slate-200 dark:border-slate-700">SMS ACCESS NUMBER</th>
-                                            <th class="p-2.5 border border-slate-200 dark:border-slate-700">STATUS</th>
+                                        <tr class="bg-black text-slate-400 uppercase text-[10px]">
+                                            <th class="p-2.5 border border-zinc-800">RANGE</th>
+                                            <th class="p-2.5 border border-zinc-800">PREFIX</th>
+                                            <th class="p-2.5 border border-zinc-800">SMS ACCESS NUMBER</th>
+                                            <th class="p-2.5 border border-zinc-800">STATUS</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr><td colspan="4" class="p-6 text-center text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700">No access data available</td></tr>
+                                        <tr><td colspan="4" class="p-6 text-center text-slate-400 border border-zinc-800">No access data available</td></tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -303,13 +304,13 @@
                     <!-- 5. MY ACTIVITY SECTION -->
                     <div id="activitySection" class="space-y-4 hidden">
                         <div>
-                            <h1 class="text-xl font-bold tracking-tight">My Activity</h1>
-                            <p class="text-xs text-slate-500 dark:text-slate-400"><a href="#" onclick="showSection('dashboard')" class="text-blue-600">Home</a> &rsaquo; My Activity</p>
+                            <h1 class="text-xl font-bold tracking-tight text-white">My Activity</h1>
+                            <p class="text-xs text-slate-400"><a href="#" onclick="showSection('dashboard')" class="text-blue-500">Home</a> &rsaquo; My Activity</p>
                         </div>
-                        <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 shadow-sm space-y-3 text-xs">
-                            <table class="w-full text-left border-collapse border border-slate-200 dark:border-slate-700">
-                                <tr class="bg-slate-50 dark:bg-slate-900 text-slate-500 text-[10px] uppercase"><th class="p-2 border">Date</th><th class="p-2 border">Activity</th><th class="p-2 border">Description</th><th class="p-2 border">IP</th></tr>
-                                <tr><td colspan="4" class="p-4 text-center text-slate-500 dark:text-slate-400 border">DISABLED</td></tr>
+                        <div class="bg-zinc-950 border border-zinc-800 rounded-xl p-4 shadow-sm space-y-3 text-xs">
+                            <table class="w-full text-left border-collapse border border-zinc-800">
+                                <tr class="bg-black text-slate-400 text-[10px] uppercase"><th class="p-2 border border-zinc-800">Date</th><th class="p-2 border border-zinc-800">Activity</th><th class="p-2 border border-zinc-800">Description</th><th class="p-2 border border-zinc-800">IP</th></tr>
+                                <tr><td colspan="4" class="p-4 text-center text-slate-400 border border-zinc-800">DISABLED</td></tr>
                             </table>
                         </div>
                     </div>
@@ -317,13 +318,13 @@
                     <!-- 6. NOTIFICATIONS SECTION -->
                     <div id="notificationsSection" class="space-y-4 hidden">
                         <div>
-                            <h1 class="text-xl font-bold tracking-tight">Notifications</h1>
-                            <p class="text-xs text-slate-500 dark:text-slate-400"><a href="#" onclick="showSection('dashboard')" class="text-blue-600">Home</a> &rsaquo; Notifications</p>
+                            <h1 class="text-xl font-bold tracking-tight text-white">Notifications</h1>
+                            <p class="text-xs text-slate-400"><a href="#" onclick="showSection('dashboard')" class="text-blue-500">Home</a> &rsaquo; Notifications</p>
                         </div>
-                        <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 shadow-sm space-y-3 text-xs">
-                            <table class="w-full text-left border-collapse border border-slate-200 dark:border-slate-700">
-                                <tr class="bg-slate-50 dark:bg-slate-900 text-slate-500 text-[10px] uppercase"><th class="p-2 border">Date</th><th class="p-2 border">Title</th><th class="p-2 border">Message</th></tr>
-                                <tr><td colspan="3" class="p-6 text-center text-slate-500 dark:text-slate-400 border">No data available in table</td></tr>
+                        <div class="bg-zinc-950 border border-zinc-800 rounded-xl p-4 shadow-sm space-y-3 text-xs">
+                            <table class="w-full text-left border-collapse border border-zinc-800">
+                                <tr class="bg-black text-slate-400 text-[10px] uppercase"><th class="p-2 border border-zinc-800">Date</th><th class="p-2 border border-zinc-800">Title</th><th class="p-2 border border-zinc-800">Message</th></tr>
+                                <tr><td colspan="3" class="p-6 text-center text-slate-400 border border-zinc-800">No data available in table</td></tr>
                             </table>
                         </div>
                     </div>
@@ -331,40 +332,40 @@
                     <!-- 7. ANDKOSH OS SECTION -->
                     <div id="ankoshOSSection" class="space-y-4 hidden">
                         <div>
-                            <h1 class="text-xl font-bold tracking-tight">Andkosh Operating System</h1>
-                            <p class="text-xs text-slate-500 dark:text-slate-400"><a href="#" onclick="showSection('dashboard')" class="text-blue-600">Home</a> &rsaquo; Andkosh OS</p>
+                            <h1 class="text-xl font-bold tracking-tight text-white">Andkosh Operating System</h1>
+                            <p class="text-xs text-slate-400"><a href="#" onclick="showSection('dashboard')" class="text-blue-500">Home</a> &rsaquo; Andkosh OS</p>
                         </div>
-                        <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-sm space-y-4 text-xs">
-                            <div class="flex items-center space-x-3 pb-3 border-b border-slate-200 dark:border-slate-700">
+                        <div class="bg-zinc-950 border border-zinc-800 rounded-xl p-5 shadow-sm space-y-4 text-xs">
+                            <div class="flex items-center space-x-3 pb-3 border-b border-zinc-800">
                                 <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center text-lg font-bold">
                                     <i class="fa-solid fa-microchip"></i>
                                 </div>
                                 <div>
-                                    <h2 class="text-sm font-bold text-slate-800 dark:text-white">Andkosh OS Kernel & Environment</h2>
-                                    <p class="text-[11px] text-slate-500 dark:text-slate-400">Integrated system runtime and management console with 256-bit end-to-end encryption.</p>
+                                    <h2 class="text-sm font-bold text-white">Andkosh OS Kernel & Environment</h2>
+                                    <p class="text-[11px] text-slate-400">Integrated system runtime and management console with 256-bit end-to-end encryption.</p>
                                 </div>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
-                                <div class="p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg">
+                                <div class="p-3 bg-black border border-zinc-800 rounded-lg">
                                     <span class="text-[10px] font-semibold text-slate-400 uppercase">OS Version</span>
-                                    <h3 class="font-bold text-sm text-slate-700 dark:text-slate-200 mt-1">Andkosh v2.4.0</h3>
+                                    <h3 class="font-bold text-sm text-slate-200 mt-1">Andkosh v2.4.0</h3>
                                 </div>
-                                <div class="p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg">
+                                <div class="p-3 bg-black border border-zinc-800 rounded-lg">
                                     <span class="text-[10px] font-semibold text-slate-400 uppercase">System Status</span>
-                                    <h3 class="font-bold text-sm text-emerald-500 mt-1"><i class="fa-solid fa-circle text-[8px] mr-1"></i> Operational</h3>
+                                    <h3 class="font-bold text-sm text-emerald-400 mt-1"><i class="fa-solid fa-circle text-[8px] mr-1"></i> Operational</h3>
                                 </div>
-                                <div class="p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg">
+                                <div class="p-3 bg-black border border-zinc-800 rounded-lg">
                                     <span class="text-[10px] font-semibold text-slate-400 uppercase">Architecture</span>
-                                    <h3 class="font-bold text-sm text-slate-700 dark:text-slate-200 mt-1">x86_64 / ARM64</h3>
+                                    <h3 class="font-bold text-sm text-slate-200 mt-1">x86_64 / ARM64</h3>
                                 </div>
-                                <div class="p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg">
+                                <div class="p-3 bg-black border border-zinc-800 rounded-lg">
                                     <span class="text-[10px] font-semibold text-slate-400 uppercase">Security Protocol</span>
-                                    <h3 class="font-bold text-sm text-blue-500 mt-1"><i class="fa-solid fa-shield-halved mr-1"></i> 256-Bit E2EE</h3>
+                                    <h3 class="font-bold text-sm text-blue-400 mt-1"><i class="fa-solid fa-shield-halved mr-1"></i> 256-Bit E2EE</h3>
                                 </div>
                             </div>
-                            <div class="p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg space-y-2">
-                                <p class="font-semibold text-slate-700 dark:text-slate-300">System Logs & Diagnostics:</p>
-                                <div class="bg-slate-900 text-emerald-400 font-mono text-[11px] p-3 rounded-md space-y-1 overflow-x-auto">
+                            <div class="p-3 bg-black border border-zinc-800 rounded-lg space-y-2">
+                                <p class="font-semibold text-slate-300">System Logs & Diagnostics:</p>
+                                <div class="bg-black text-emerald-400 font-mono text-[11px] p-3 rounded-md space-y-1 overflow-x-auto border border-zinc-900">
                                     <p>[00:00:01] Initializing Andkosh OS Kernel modules...</p>
                                     <p>[00:00:02] Establishing 256-bit end-to-end encrypted tunnels...</p>
                                     <p>[00:00:03] Secure network bridge verified and active.</p>
@@ -377,8 +378,8 @@
                 </main>
             </div>
 
-            <!-- Footer (Shown ONLY on Numbers, CDR, and Access, hidden on Dashboard & Login) -->
-            <footer id="pageFooterNotice" class="text-center py-3 text-[11px] text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition-colors duration-300 hidden">
+            <!-- Footer -->
+            <footer id="pageFooterNotice" class="text-center py-3 text-[11px] text-slate-400 border-t border-zinc-800 bg-zinc-950 transition-colors duration-300 hidden">
                 Copyright &copy; 2026 EMS SMS Panel ♥️
             </footer>
         </div>
@@ -386,40 +387,40 @@
     </div>
 
     <!-- Switcher Drawer Panel -->
-    <div id="settingsOverlay" class="fixed inset-0 bg-black/50 z-50 hidden"></div>
-    <div id="settingsDrawer" class="fixed top-0 right-0 w-80 md:w-96 h-full bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 z-50 transform translate-x-full transition-transform duration-300 flex flex-col text-xs shadow-2xl">
-        <div class="p-3.5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
-            <h3 class="font-bold text-sm">Switcher</h3>
-            <button id="closeSettings" class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"><i class="fa-solid fa-xmark text-base"></i></button>
+    <div id="settingsOverlay" class="fixed inset-0 bg-black/60 z-50 hidden"></div>
+    <div id="settingsDrawer" class="fixed top-0 right-0 w-80 md:w-96 h-full bg-zinc-950 border-l border-zinc-800 z-50 transform translate-x-full transition-transform duration-300 flex flex-col text-xs shadow-2xl">
+        <div class="p-3.5 border-b border-zinc-800 flex items-center justify-between">
+            <h3 class="font-bold text-sm text-white">Switcher</h3>
+            <button id="closeSettings" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-base"></i></button>
         </div>
-        <div class="grid grid-cols-2 text-center font-medium border-b border-slate-200 dark:border-slate-800">
-            <button id="tabStylesBtn" onclick="switchTab('styles')" class="py-2.5 text-slate-500 dark:text-slate-400">Theme Styles</button>
-            <button id="tabColorsBtn" onclick="switchTab('colors')" class="py-2.5 text-emerald-600 border-b-2 border-emerald-600 font-semibold">Theme Colors</button>
+        <div class="grid grid-cols-2 text-center font-medium border-b border-zinc-800">
+            <button id="tabStylesBtn" onclick="switchTab('styles')" class="py-2.5 text-slate-400">Theme Styles</button>
+            <button id="tabColorsBtn" onclick="switchTab('colors')" class="py-2.5 text-emerald-400 border-b-2 border-emerald-500 font-semibold">Theme Colors</button>
         </div>
         <div class="flex-1 overflow-y-auto p-4 space-y-5">
             <div id="themeColorsTab" class="space-y-4">
                 <div>
-                    <p class="font-semibold text-slate-700 dark:text-slate-300 mb-2">Menu Colors:</p>
+                    <p class="font-semibold text-slate-300 mb-2">Menu Colors:</p>
                     <div class="flex items-center space-x-2.5">
-                        <div class="w-7 h-7 rounded-full bg-white border border-slate-300 cursor-pointer" onclick="setMenuColor('#ffffff')"></div>
-                        <div class="w-7 h-7 rounded-full bg-slate-900 border border-slate-700 cursor-pointer" onclick="setMenuColor('#0f172a')"></div>
+                        <div class="w-7 h-7 rounded-full bg-white border border-zinc-700 cursor-pointer" onclick="setMenuColor('#ffffff')"></div>
+                        <div class="w-7 h-7 rounded-full bg-zinc-950 border border-zinc-700 cursor-pointer" onclick="setMenuColor('#09090b')"></div>
                         <div class="w-7 h-7 rounded-full bg-blue-600 cursor-pointer" onclick="setMenuColor('#2563eb')"></div>
                         <div class="w-7 h-7 rounded-full bg-emerald-600 cursor-pointer" onclick="setMenuColor('#059669')"></div>
                     </div>
                 </div>
 
                 <div>
-                    <p class="font-semibold text-slate-700 dark:text-slate-300 mb-2">Header Colors:</p>
+                    <p class="font-semibold text-slate-300 mb-2">Header Colors:</p>
                     <div class="flex items-center space-x-2.5">
-                        <div class="w-7 h-7 rounded-full bg-white border border-slate-300 cursor-pointer" onclick="setHeaderColor('#ffffff')"></div>
-                        <div class="w-7 h-7 rounded-full bg-slate-900 border border-slate-700 cursor-pointer" onclick="setHeaderColor('#0f172a')"></div>
+                        <div class="w-7 h-7 rounded-full bg-white border border-zinc-700 cursor-pointer" onclick="setHeaderColor('#ffffff')"></div>
+                        <div class="w-7 h-7 rounded-full bg-zinc-950 border border-zinc-700 cursor-pointer" onclick="setHeaderColor('#09090b')"></div>
                         <div class="w-7 h-7 rounded-full bg-blue-600 cursor-pointer" onclick="setHeaderColor('#2563eb')"></div>
-                        <div class="w-7 h-7 rounded-full bg-indigo-900 cursor-pointer" onclick="setHeaderColor('#311042')"></div>
+                        <div class="w-7 h-7 rounded-full bg-indigo-950 cursor-pointer" onclick="setHeaderColor('#311042')"></div>
                     </div>
                 </div>
 
                 <div>
-                    <p class="font-semibold text-slate-700 dark:text-slate-300 mb-2">Theme Primary:</p>
+                    <p class="font-semibold text-slate-300 mb-2">Theme Primary:</p>
                     <div class="flex items-center space-x-2.5">
                         <div class="w-6 h-6 rounded-full bg-blue-700 cursor-pointer" onclick="setPrimaryColor('#1d4ed8')"></div>
                         <div class="w-6 h-6 rounded-full bg-cyan-500 cursor-pointer" onclick="setPrimaryColor('#06b6d4')"></div>
@@ -430,10 +431,10 @@
                 </div>
 
                 <div>
-                    <p class="font-semibold text-slate-700 dark:text-slate-300 mb-2">Theme Background:</p>
+                    <p class="font-semibold text-slate-300 mb-2">Theme Background:</p>
                     <div class="flex items-center space-x-2.5">
                         <div class="w-6 h-6 rounded-full bg-slate-100 border cursor-pointer" onclick="setBgColor('#f8fafc', '#1e293b')"></div>
-                        <div class="w-6 h-6 rounded-full bg-slate-900 border cursor-pointer" onclick="setBgColor('#0f172a', '#f8fafc')"></div>
+                        <div class="w-6 h-6 rounded-full bg-black border border-zinc-700 cursor-pointer" onclick="setBgColor('#000000', '#f8fafc')"></div>
                         <div class="w-6 h-6 rounded-full bg-indigo-950 border cursor-pointer" onclick="setBgColor('#020617', '#ffffff')"></div>
                         <div class="w-6 h-6 rounded-full bg-emerald-950 border cursor-pointer" onclick="setBgColor('#022c22', '#ffffff')"></div>
                     </div>
@@ -442,16 +443,16 @@
 
             <div id="themeStylesTab" class="space-y-3 hidden">
                 <div>
-                    <p class="font-semibold mb-1 text-slate-700 dark:text-slate-300">Theme Color Mode:</p>
+                    <p class="font-semibold mb-1 text-slate-300">Theme Color Mode:</p>
                     <div class="flex space-x-4">
-                        <label class="flex items-center space-x-1.5"><input type="radio" name="mode" id="lightRadio" onclick="setBgColor('#f8fafc', '#1e293b')"><span>Light</span></label>
-                        <label class="flex items-center space-x-1.5"><input type="radio" name="mode" id="darkRadio" onclick="setBgColor('#0f172a', '#f8fafc')" checked><span>Dark</span></label>
+                        <label class="flex items-center space-x-1.5 text-slate-300"><input type="radio" name="mode" id="lightRadio" onclick="setBgColor('#f8fafc', '#1e293b')"><span>Light</span></label>
+                        <label class="flex items-center space-x-1.5 text-slate-300"><input type="radio" name="mode" id="darkRadio" onclick="setBgColor('#000000', '#f8fafc')" checked><span>Dark</span></label>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="p-3 border-t border-slate-200 dark:border-slate-800">
-            <button onclick="location.reload()" class="w-full bg-rose-500 hover:bg-rose-600 text-white font-medium py-2 rounded-lg text-xs">Reset</button>
+        <div class="p-3 border-t border-zinc-800">
+            <button onclick="location.reload()" class="w-full bg-rose-600 hover:bg-rose-700 text-white font-medium py-2 rounded-lg text-xs">Reset</button>
         </div>
     </div>
 
@@ -525,7 +526,7 @@
         function setBgColor(bgColor, textColor) {
             document.documentElement.style.setProperty('--bg-color', bgColor);
             document.documentElement.style.setProperty('--text-color', textColor);
-            if(bgColor === '#0f172a' || bgColor === '#020617' || bgColor === '#022c22') {
+            if(bgColor === '#000000' || bgColor === '#0f172a' || bgColor === '#020617' || bgColor === '#022c22') {
                 document.getElementById('darkRadio').checked = true;
                 themeIcon.className = 'fa-solid fa-sun';
             } else {
@@ -543,7 +544,7 @@
         document.getElementById('themeToggle').addEventListener('click', () => {
             const currentBg = getComputedStyle(document.documentElement).getPropertyValue('--bg-color').trim();
             if(currentBg === '#f8fafc') {
-                setBgColor('#0f172a', '#f8fafc');
+                setBgColor('#000000', '#f8fafc');
             } else {
                 setBgColor('#f8fafc', '#1e293b');
             }
@@ -590,13 +591,13 @@
             if (tab === 'styles') {
                 stylesTab.classList.remove('hidden');
                 colorsTab.classList.add('hidden');
-                stylesBtn.className = 'py-2.5 text-emerald-600 border-b-2 border-emerald-600 font-semibold';
-                colorsBtn.className = 'py-2.5 text-slate-500 dark:text-slate-400';
+                stylesBtn.className = 'py-2.5 text-emerald-400 border-b-2 border-emerald-500 font-semibold';
+                colorsBtn.className = 'py-2.5 text-slate-400';
             } else {
                 colorsTab.classList.remove('hidden');
                 stylesTab.classList.add('hidden');
-                colorsBtn.className = 'py-2.5 text-emerald-600 border-b-2 border-emerald-600 font-semibold';
-                stylesBtn.className = 'py-2.5 text-slate-500 dark:text-slate-400';
+                colorsBtn.className = 'py-2.5 text-emerald-400 border-b-2 border-emerald-500 font-semibold';
+                stylesBtn.className = 'py-2.5 text-slate-400';
             }
         }
 
@@ -639,7 +640,6 @@
             profileMenu.classList.add('hidden');
         }
 
-        // Initialize captcha immediately on script parse and on DOM ready
         generateCaptcha();
         window.addEventListener('DOMContentLoaded', generateCaptcha);
     </script>
