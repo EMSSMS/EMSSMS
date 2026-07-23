@@ -61,18 +61,18 @@
                     <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-4 text-xs">
                         <div>
                             <label class="block font-medium mb-1">Username</label>
-                            <input type="text" id="loginUser" placeholder="Enter Your Username" required class="w-full px-3 py-2.5 border rounded-lg outline-none focus:border-blue-600" style="background-color: var(--box-bg);">
+                            <input type="text" id="loginUser" placeholder="Enter Your Username" required class="w-full px-3 py-2.5 border rounded-lg outline-none focus:border-blue-600 shadow-sm" style="background-color: var(--box-bg);">
                         </div>
                         <div>
                             <label class="block font-medium mb-1">Password</label>
-                            <input type="password" id="loginPass" placeholder="Enter Your Password" required class="w-full px-3 py-2.5 border rounded-lg outline-none focus:border-blue-600" style="background-color: var(--box-bg);">
+                            <input type="password" id="loginPass" placeholder="Enter Your Password" required class="w-full px-3 py-2.5 border rounded-lg outline-none focus:border-blue-600 shadow-sm" style="background-color: var(--box-bg);">
                         </div>
-                        <!-- Compact OTP/Captcha Box with zero-padding and matching uniform color -->
-                        <div class="flex items-center justify-between p-2.5 border rounded-lg" style="background-color: var(--box-bg);">
-                            <span id="captchaText" class="font-bold text-xs select-none tracking-tight">00 + 00 =</span>
-                            <input type="text" id="captchaInput" placeholder="Answer" required class="w-14 px-1.5 py-1 border rounded-md text-center text-xs outline-none focus:border-blue-600" style="background-color: var(--box-bg);">
+                        <!-- Single digit captcha format like 4+5 -->
+                        <div class="flex items-center justify-between p-2.5 border rounded-lg shadow-sm" style="background-color: var(--box-bg);">
+                            <span id="captchaText" class="font-bold text-xs select-none tracking-tight">4 + 5 =</span>
+                            <input type="text" id="captchaInput" placeholder="Ans" required class="w-14 px-1.5 py-1 border rounded-md text-center text-xs outline-none focus:border-blue-600 shadow-sm" style="background-color: var(--box-bg);">
                         </div>
-                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow transition">Sign In</button>
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-md transition">Sign In</button>
                     </form>
                 </div>
             </div>
@@ -98,7 +98,7 @@
                         </button>
 
                         <div class="relative">
-                            <button id="profileDropdownToggle" class="w-8 h-8 rounded-full bg-slate-300 flex items-center justify-center overflow-hidden focus:outline-none">
+                            <button id="profileDropdownToggle" class="w-8 h-8 rounded-full bg-slate-300 flex items-center justify-center overflow-hidden focus:outline-none shadow-sm">
                                 <i class="fa-solid fa-user text-xs"></i>
                             </button>
                             <div id="profileMenu" class="hidden absolute right-0 mt-2 w-60 border rounded-lg shadow-xl py-2 z-50 text-xs" style="background-color: var(--menu-bg);">
@@ -119,7 +119,7 @@
                     </div>
                 </header>
 
-                <!-- Sidebar Navigation Drawer -->
+                <!-- Sidebar Navigation Drawer (Removed Andkosh OS menu item) -->
                 <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
                 <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full border-r z-50 transform -translate-x-full transition-transform duration-300 flex flex-col text-xs shadow-xl" style="background-color: var(--menu-bg);">
                     <div class="p-3 border-b flex items-center justify-between">
@@ -131,14 +131,13 @@
                         <a href="#" onclick="showSection('numbers')" class="flex items-center space-x-2.5 px-2.5 py-2 rounded-lg font-medium hover:opacity-80"><i class="fa-solid fa-chart-pie text-blue-600"></i> <span>SMS Test Numbers</span></a>
                         <a href="#" onclick="showSection('cdr')" class="flex items-center space-x-2.5 px-2.5 py-2 rounded-lg font-medium hover:opacity-80"><i class="fa-solid fa-chart-column text-blue-600"></i> <span>SMS CDR Stats</span></a>
                         <a href="#" onclick="showSection('access')" class="flex items-center space-x-2.5 px-2.5 py-2 rounded-lg font-medium hover:opacity-80"><i class="fa-solid fa-file-lines text-blue-600"></i> <span>SMS Access List</span></a>
-                        <a href="#" onclick="showSection('ankoshOS')" class="flex items-center space-x-2.5 px-2.5 py-2 rounded-lg font-medium hover:opacity-80"><i class="fa-solid fa-laptop-code text-blue-600"></i> <span>Andkosh OS</span></a>
                     </nav>
                 </aside>
 
                 <!-- Main Pages Container -->
                 <main class="p-3 md:p-5 max-w-5xl mx-auto space-y-4">
                     
-                    <!-- 1. DASHBOARD -->
+                    <!-- 1. DASHBOARD (All numbers set to 0) -->
                     <div id="dashboardSection" class="space-y-4">
                         <div>
                             <h1 class="text-xl font-bold tracking-tight">SMS Dashboard</h1>
@@ -148,7 +147,7 @@
                             <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-5 rounded-2xl shadow-md flex items-center justify-between">
                                 <div>
                                     <p class="text-[11px] font-bold uppercase tracking-wider opacity-90 mb-1">TODAY SMS</p>
-                                    <h2 class="text-3xl font-extrabold tracking-tight mb-1">113</h2>
+                                    <h2 class="text-3xl font-extrabold tracking-tight mb-1">0</h2>
                                     <p class="text-xs opacity-90">SMS Recived Today</p>
                                 </div>
                                 <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-sm"><i class="fa-solid fa-arrow-up"></i></div>
@@ -156,7 +155,7 @@
                             <div class="bg-gradient-to-r from-rose-400 to-rose-500 text-white p-5 rounded-2xl shadow-md flex items-center justify-between">
                                 <div>
                                     <p class="text-[11px] font-bold uppercase tracking-wider opacity-90 mb-1">YESTERDAY SMS</p>
-                                    <h2 class="text-3xl font-extrabold tracking-tight mb-1">902</h2>
+                                    <h2 class="text-3xl font-extrabold tracking-tight mb-1">0</h2>
                                     <p class="text-xs opacity-90">These received yesterday</p>
                                 </div>
                                 <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-sm"><i class="fa-solid fa-arrow-down"></i></div>
@@ -164,7 +163,7 @@
                             <div class="bg-gradient-to-r from-emerald-500 to-teal-500 text-white p-5 rounded-2xl shadow-md flex items-center justify-between">
                                 <div>
                                     <p class="text-[11px] font-bold uppercase tracking-wider opacity-90 mb-1">Last 7 Days</p>
-                                    <h2 class="text-3xl font-extrabold tracking-tight mb-1">4318</h2>
+                                    <h2 class="text-3xl font-extrabold tracking-tight mb-1">0</h2>
                                     <p class="text-xs opacity-90">Received in last 7 days</p>
                                 </div>
                                 <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-sm"><i class="fa-solid fa-arrow-up"></i></div>
@@ -172,7 +171,7 @@
                             <div class="bg-gradient-to-r from-amber-500 to-orange-500 text-white p-5 rounded-2xl shadow-md flex items-center justify-between">
                                 <div>
                                     <p class="text-[11px] font-bold uppercase tracking-wider opacity-90 mb-1">SMS This Month</p>
-                                    <h2 class="text-3xl font-extrabold tracking-tight mb-1">26617</h2>
+                                    <h2 class="text-3xl font-extrabold tracking-tight mb-1">0</h2>
                                     <p class="text-xs opacity-90">SMS Received in current month</p>
                                 </div>
                                 <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-sm"><i class="fa-solid fa-arrow-down"></i></div>
@@ -187,7 +186,7 @@
                             <p class="text-xs opacity-70"><a href="#" onclick="showSection('dashboard')" class="text-blue-600">Home</a> &rsaquo; SMS Test Numbers</p>
                         </div>
                         <div class="border rounded-xl p-4 shadow-sm space-y-3 text-xs" style="background-color: var(--box-bg);">
-                            <select class="w-full border rounded-lg px-3 py-2 outline-none" style="background-color: var(--box-bg);">
+                            <select class="w-full border rounded-lg px-3 py-2 outline-none shadow-sm" style="background-color: var(--box-bg);">
                                 <option>Select Range</option>
                             </select>
                             <div><button class="bg-rose-500 hover:bg-rose-600 text-white font-medium px-4 py-2 rounded-lg shadow-sm">Filter</button></div>
@@ -217,8 +216,8 @@
                         </div>
                         <div class="border rounded-xl p-4 shadow-sm space-y-3 text-xs" style="background-color: var(--box-bg);">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-                                <input type="text" value="2026-07-22 00:00:00" class="border rounded-lg px-3 py-2 outline-none" style="background-color: var(--box-bg);">
-                                <input type="text" value="2026-07-22 23:59:59" class="border rounded-lg px-3 py-2 outline-none" style="background-color: var(--box-bg);">
+                                <input type="text" value="2026-07-22 00:00:00" class="border rounded-lg px-3 py-2 outline-none shadow-sm" style="background-color: var(--box-bg);">
+                                <input type="text" value="2026-07-22 23:59:59" class="border rounded-lg px-3 py-2 outline-none shadow-sm" style="background-color: var(--box-bg);">
                             </div>
                             <div class="overflow-x-auto pt-2">
                                 <table class="w-full text-left border-collapse border">
@@ -249,7 +248,7 @@
                             <p class="text-xs opacity-70"><a href="#" onclick="showSection('dashboard')" class="text-blue-600">Home</a> &rsaquo; SMS Access List</p>
                         </div>
                         <div class="border rounded-xl p-4 shadow-sm space-y-3 text-xs" style="background-color: var(--box-bg);">
-                            <select class="w-full border rounded-lg px-3 py-2 outline-none" style="background-color: var(--box-bg);"><option>Select Range</option></select>
+                            <select class="w-full border rounded-lg px-3 py-2 outline-none shadow-sm" style="background-color: var(--box-bg);"><option>Select Range</option></select>
                             <div><button class="bg-rose-500 hover:bg-rose-600 text-white font-medium px-4 py-2 rounded-lg shadow-sm">Filter</button></div>
                             <div class="overflow-x-auto pt-2">
                                 <table class="w-full text-left border-collapse border">
@@ -273,7 +272,7 @@
                     <div id="activitySection" class="space-y-4 hidden">
                         <div>
                             <h1 class="text-xl font-bold tracking-tight">My Activity</h1>
-                            <p class="text-xs opacity-70"><a href="#" onclick="showSection('dashboard')" class="text-blue-600"><a href="#" onclick="showSection('dashboard')" class="text-blue-600">Home</a> &rsaquo; My Activity</p>
+                            <p class="text-xs opacity-70"><a href="#" onclick="showSection('dashboard')" class="text-blue-600">Home</a> &rsaquo; My Activity</p>
                         </div>
                         <div class="border rounded-xl p-4 shadow-sm space-y-3 text-xs" style="background-color: var(--box-bg);">
                             <table class="w-full text-left border-collapse border">
@@ -294,41 +293,6 @@
                                 <tr class="text-[10px] uppercase opacity-70"><th class="p-2 border">Date</th><th class="p-2 border">Title</th><th class="p-2 border">Message</th></tr>
                                 <tr><td colspan="3" class="p-6 text-center border opacity-60">No data available in table</td></tr>
                             </table>
-                        </div>
-                    </div>
-
-                    <!-- 7. ANDKOSH OS -->
-                    <div id="ankoshOSSection" class="space-y-4 hidden">
-                        <div>
-                            <h1 class="text-xl font-bold tracking-tight">Andkosh Operating System</h1>
-                            <p class="text-xs opacity-70"><a href="#" onclick="showSection('dashboard')" class="text-blue-600">Home</a> &rsaquo; Andkosh OS</p>
-                        </div>
-                        <div class="border rounded-xl p-5 shadow-sm space-y-4 text-xs" style="background-color: var(--box-bg);">
-                            <div class="flex items-center space-x-3 pb-3 border-b">
-                                <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center text-lg font-bold"><i class="fa-solid fa-microchip"></i></div>
-                                <div>
-                                    <h2 class="text-sm font-bold">Andkosh OS Kernel & Environment</h2>
-                                    <p class="text-[11px] opacity-70">Integrated system runtime and management console with 256-bit end-to-end encryption.</p>
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
-                                <div class="p-3 border rounded-lg" style="background-color: var(--login-bg);">
-                                    <span class="text-[10px] font-semibold opacity-60 uppercase">OS Version</span>
-                                    <h3 class="font-bold text-sm mt-1">Andkosh v2.4.0</h3>
-                                </div>
-                                <div class="p-3 border rounded-lg" style="background-color: var(--login-bg);">
-                                    <span class="text-[10px] font-semibold opacity-60 uppercase">System Status</span>
-                                    <h3 class="font-bold text-sm text-emerald-500 mt-1"><i class="fa-solid fa-circle text-[8px] mr-1"></i> Operational</h3>
-                                </div>
-                                <div class="p-3 border rounded-lg" style="background-color: var(--login-bg);">
-                                    <span class="text-[10px] font-semibold opacity-60 uppercase">Architecture</span>
-                                    <h3 class="font-bold text-sm mt-1">x86_64 / ARM64</h3>
-                                </div>
-                                <div class="p-3 border rounded-lg" style="background-color: var(--login-bg);">
-                                    <span class="text-[10px] font-semibold opacity-60 uppercase">Security Protocol</span>
-                                    <h3 class="font-bold text-sm text-blue-500 mt-1"><i class="fa-solid fa-shield-halved mr-1"></i> 256-Bit E2EE</h3>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
@@ -359,50 +323,60 @@
                 <div>
                     <p class="font-semibold mb-2">Menu Colors:</p>
                     <div class="flex items-center space-x-2.5">
-                        <div class="w-7 h-7 rounded-full bg-white border cursor-pointer" onclick="setMenuColor('#ffffff')"></div>
-                        <div class="w-7 h-7 rounded-full bg-slate-100 border cursor-pointer" onclick="setMenuColor('#f1f5f9')"></div>
-                        <div class="w-7 h-7 rounded-full bg-blue-50 border cursor-pointer" onclick="setMenuColor('#eff6ff')"></div>
-                        <div class="w-7 h-7 rounded-full bg-amber-50 border cursor-pointer" onclick="setMenuColor('#fffbeb')"></div>
+                        <div class="w-7 h-7 rounded-full bg-white border cursor-pointer shadow-sm" onclick="setMenuColor('#ffffff')"></div>
+                        <div class="w-7 h-7 rounded-full bg-slate-100 border cursor-pointer shadow-sm" onclick="setMenuColor('#f1f5f9')"></div>
+                        <div class="w-7 h-7 rounded-full bg-blue-50 border cursor-pointer shadow-sm" onclick="setMenuColor('#eff6ff')"></div>
+                        <div class="w-7 h-7 rounded-full bg-amber-50 border cursor-pointer shadow-sm" onclick="setMenuColor('#fffbeb')"></div>
+                        <div class="w-7 h-7 rounded-full bg-zinc-900 border cursor-pointer shadow-sm" onclick="setMenuColor('#18181b')"></div>
+                        <div class="w-7 h-7 rounded-full bg-black border cursor-pointer shadow-sm" onclick="setMenuColor('#000000')"></div>
                     </div>
                 </div>
 
                 <div>
                     <p class="font-semibold mb-2">Header Colors:</p>
                     <div class="flex items-center space-x-2.5">
-                        <div class="w-7 h-7 rounded-full bg-white border cursor-pointer" onclick="setHeaderColor('#ffffff')"></div>
-                        <div class="w-7 h-7 rounded-full bg-slate-100 border cursor-pointer" onclick="setHeaderColor('#f1f5f9')"></div>
-                        <div class="w-7 h-7 rounded-full bg-blue-50 border cursor-pointer" onclick="setHeaderColor('#eff6ff')"></div>
-                        <div class="w-7 h-7 rounded-full bg-rose-50 border cursor-pointer" onclick="setHeaderColor('#fff1f2')"></div>
+                        <div class="w-7 h-7 rounded-full bg-white border cursor-pointer shadow-sm" onclick="setHeaderColor('#ffffff')"></div>
+                        <div class="w-7 h-7 rounded-full bg-slate-100 border cursor-pointer shadow-sm" onclick="setHeaderColor('#f1f5f9')"></div>
+                        <div class="w-7 h-7 rounded-full bg-blue-50 border cursor-pointer shadow-sm" onclick="setHeaderColor('#eff6ff')"></div>
+                        <div class="w-7 h-7 rounded-full bg-rose-50 border cursor-pointer shadow-sm" onclick="setHeaderColor('#fff1f2')"></div>
+                        <div class="w-7 h-7 rounded-full bg-zinc-900 border cursor-pointer shadow-sm" onclick="setHeaderColor('#18181b')"></div>
+                        <div class="w-7 h-7 rounded-full bg-black border cursor-pointer shadow-sm" onclick="setHeaderColor('#000000')"></div>
                     </div>
                 </div>
 
                 <div>
                     <p class="font-semibold mb-2">Box & Input Colors:</p>
                     <div class="flex items-center space-x-2.5">
-                        <div class="w-7 h-7 rounded-full bg-white border cursor-pointer" onclick="setBoxColor('#ffffff')"></div>
-                        <div class="w-7 h-7 rounded-full bg-slate-50 border cursor-pointer" onclick="setBoxColor('#f8fafc')"></div>
-                        <div class="w-7 h-7 rounded-full bg-blue-50 border cursor-pointer" onclick="setBoxColor('#eff6ff')"></div>
-                        <div class="w-7 h-7 rounded-full bg-emerald-50 border cursor-pointer" onclick="setBoxColor('#ecfdf5')"></div>
+                        <div class="w-7 h-7 rounded-full bg-white border cursor-pointer shadow-sm" onclick="setBoxColor('#ffffff')"></div>
+                        <div class="w-7 h-7 rounded-full bg-slate-50 border cursor-pointer shadow-sm" onclick="setBoxColor('#f8fafc')"></div>
+                        <div class="w-7 h-7 rounded-full bg-blue-50 border cursor-pointer shadow-sm" onclick="setBoxColor('#eff6ff')"></div>
+                        <div class="w-7 h-7 rounded-full bg-emerald-50 border cursor-pointer shadow-sm" onclick="setBoxColor('#ecfdf5')"></div>
+                        <div class="w-7 h-7 rounded-full bg-zinc-900 border cursor-pointer shadow-sm" onclick="setBoxColor('#18181b')"></div>
+                        <div class="w-7 h-7 rounded-full bg-black border cursor-pointer shadow-sm" onclick="setBoxColor('#000000')"></div>
                     </div>
                 </div>
 
                 <div>
                     <p class="font-semibold mb-2">Login Page Background:</p>
                     <div class="flex items-center space-x-2.5">
-                        <div class="w-7 h-7 rounded-full bg-white border cursor-pointer" onclick="setLoginBg('#ffffff')"></div>
-                        <div class="w-7 h-7 rounded-full bg-slate-50 border cursor-pointer" onclick="setLoginBg('#f8fafc')"></div>
-                        <div class="w-7 h-7 rounded-full bg-blue-50 border cursor-pointer" onclick="setLoginBg('#eff6ff')"></div>
-                        <div class="w-7 h-7 rounded-full bg-amber-50 border cursor-pointer" onclick="setLoginBg('#fffbeb')"></div>
+                        <div class="w-7 h-7 rounded-full bg-white border cursor-pointer shadow-sm" onclick="setLoginBg('#ffffff')"></div>
+                        <div class="w-7 h-7 rounded-full bg-slate-50 border cursor-pointer shadow-sm" onclick="setLoginBg('#f8fafc')"></div>
+                        <div class="w-7 h-7 rounded-full bg-blue-50 border cursor-pointer shadow-sm" onclick="setLoginBg('#eff6ff')"></div>
+                        <div class="w-7 h-7 rounded-full bg-amber-50 border cursor-pointer shadow-sm" onclick="setLoginBg('#fffbeb')"></div>
+                        <div class="w-7 h-7 rounded-full bg-zinc-900 border cursor-pointer shadow-sm" onclick="setLoginBg('#18181b')"></div>
+                        <div class="w-7 h-7 rounded-full bg-black border cursor-pointer shadow-sm" onclick="setLoginBg('#000000')"></div>
                     </div>
                 </div>
 
                 <div>
                     <p class="font-semibold mb-2">Main Background:</p>
                     <div class="flex items-center space-x-2.5">
-                        <div class="w-6 h-6 rounded-full bg-white border cursor-pointer" onclick="setBgColor('#ffffff', '#1e293b')"></div>
-                        <div class="w-6 h-6 rounded-full bg-slate-50 border cursor-pointer" onclick="setBgColor('#f8fafc', '#1e293b')"></div>
-                        <div class="w-6 h-6 rounded-full bg-blue-50 border cursor-pointer" onclick="setBgColor('#eff6ff', '#1e293b')"></div>
-                        <div class="w-6 h-6 rounded-full bg-purple-50 border cursor-pointer" onclick="setBgColor('#faf5ff', '#1e293b')"></div>
+                        <div class="w-6 h-6 rounded-full bg-white border cursor-pointer shadow-sm" onclick="setBgColor('#ffffff', '#1e293b')"></div>
+                        <div class="w-6 h-6 rounded-full bg-slate-50 border cursor-pointer shadow-sm" onclick="setBgColor('#f8fafc', '#1e293b')"></div>
+                        <div class="w-6 h-6 rounded-full bg-blue-50 border cursor-pointer shadow-sm" onclick="setBgColor('#eff6ff', '#1e293b')"></div>
+                        <div class="w-6 h-6 rounded-full bg-purple-50 border cursor-pointer shadow-sm" onclick="setBgColor('#faf5ff', '#1e293b')"></div>
+                        <div class="w-6 h-6 rounded-full bg-zinc-900 border cursor-pointer shadow-sm" onclick="setBgColor('#18181b', '#f8fafc')"></div>
+                        <div class="w-6 h-6 rounded-full bg-black border cursor-pointer shadow-sm" onclick="setBgColor('#000000', '#f8fafc')"></div>
                     </div>
                 </div>
             </div>
@@ -426,12 +400,12 @@
         let captchaNum1, captchaNum2, expectedCaptcha;
 
         function generateCaptcha() {
-            captchaNum1 = Math.floor(Math.random() * 8) + 1;
-            captchaNum2 = Math.floor(Math.random() * 8) + 1;
+            captchaNum1 = Math.floor(Math.random() * 9) + 1;
+            captchaNum2 = Math.floor(Math.random() * 9) + 1;
             expectedCaptcha = captchaNum1 + captchaNum2;
             const captchaEl = document.getElementById('captchaText');
             if (captchaEl) {
-                captchaEl.innerText = (captchaNum1 < 10 ? '0' + captchaNum1 : captchaNum1) + ' + ' + (captchaNum2 < 10 ? '0' + captchaNum2 : captchaNum2) + ' =';
+                captchaEl.innerText = captchaNum1 + ' + ' + captchaNum2 + ' =';
             }
             const captchaInputEl = document.getElementById('captchaInput');
             if (captchaInputEl) {
@@ -574,7 +548,6 @@
             document.getElementById('accessSection').classList.add('hidden');
             document.getElementById('activitySection').classList.add('hidden');
             document.getElementById('notificationsSection').classList.add('hidden');
-            document.getElementById('ankoshOSSection').classList.add('hidden');
 
             const footerNotice = document.getElementById('pageFooterNotice');
 
@@ -596,9 +569,6 @@
             } else if (sectionName === 'notifications') {
                 document.getElementById('notificationsSection').classList.remove('hidden');
                 footerNotice.classList.add('hidden');
-            } else if (sectionName === 'ankoshOS') {
-                document.getElementById('ankoshOSSection').classList.remove('hidden');
-                footerNotice.classList.add('hidden');
             }
 
             sidebar.classList.add('-translate-x-full');
@@ -610,5 +580,4 @@
         window.addEventListener('DOMContentLoaded', generateCaptcha);
     </script>
 </body>
-                                        </html>
-    
+                            </html>
